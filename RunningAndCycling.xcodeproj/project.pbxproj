@@ -56,15 +56,23 @@
 		B49B859427AB023900C8D864 /* RunningAndCycling */ = {
 			isa = PBXGroup;
 			children = (
-				B49B859527AB023900C8D864 /* AppDelegate.swift */,
-				B49B859727AB023900C8D864 /* SceneDelegate.swift */,
+				B49B85A927AB026900C8D864 /* Support */,
 				B49B859927AB023900C8D864 /* ViewController.swift */,
 				B49B859B27AB023900C8D864 /* Main.storyboard */,
-				B49B859E27AB023D00C8D864 /* Assets.xcassets */,
-				B49B85A027AB023D00C8D864 /* LaunchScreen.storyboard */,
 				B49B85A327AB023D00C8D864 /* Info.plist */,
 			);
 			path = RunningAndCycling;
+			sourceTree = "<group>";
+		};
+		B49B85A927AB026900C8D864 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				B49B859527AB023900C8D864 /* AppDelegate.swift */,
+				B49B859727AB023900C8D864 /* SceneDelegate.swift */,
+				B49B859E27AB023D00C8D864 /* Assets.xcassets */,
+				B49B85A027AB023D00C8D864 /* LaunchScreen.storyboard */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,6 +305,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -325,6 +334,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
