@@ -9,7 +9,16 @@ import UIKit
 import SnapKit
 
 class MainViewController: UIViewController {
+    
     private var dataSource:[String] = ["", ""]
+    
+//    private var dataSource:[CellType] = []
+//    private enum CellType {
+//        case achievUser
+//        case currentWeather
+//        case hourly
+//    }
+    
     
     let tableView = UITableView()
 
@@ -26,7 +35,9 @@ class MainViewController: UIViewController {
             make.edges.equalToSuperview()
         }
 
-        tableView.register(WeatherTableViewCell.self, forCellReuseIdentifier: WeatherTableViewCell.identifier)
+        tableView.register(CurrentWeatherCell.self, forCellReuseIdentifier: CurrentWeatherCell.identifier)
+        tableView.register(HourlyWeatherCell.self, forCellReuseIdentifier: HourlyWeatherCell.identifier)
+        tableView.register(AchievementCell.self, forCellReuseIdentifier: AchievementCell.identifier)
     }
     
     
@@ -39,8 +50,25 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: WeatherTableViewCell.identifier, for: indexPath) as! WeatherTableViewCell
-        return cell
+//        switch dataSource[indexPath.row] {
+//
+//        case .achievUser:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: AchievementCell.identifier, for: indexPath) as! AchievementCell
+//            return cell
+//        case .currentWeather:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: CurrentWeatherCell.identifier, for: indexPath) as! CurrentWeatherCell
+//            return cell
+//        case .hourly:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: HourlyWeatherCell.identifier, for: indexPath) as! HourlyWeatherCell
+//            return cell
+//    default:
+//        return UITableViewCell()
+//        }
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: HourlyWeatherCell.identifier, for: indexPath) as! HourlyWeatherCell
+                return cell
+        
+        
     }
     
     

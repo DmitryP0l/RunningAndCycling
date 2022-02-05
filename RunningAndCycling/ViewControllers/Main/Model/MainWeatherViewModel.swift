@@ -10,7 +10,7 @@ import UIKit
 
 struct MainWeatherViewModel {
     let currentTemp: String?
-    let filledCurrentTemp: String?
+    let feelCurrentTemp: String?
     let iconID: Int?
     let speedWind: String?
     let descriptionWeather: String?

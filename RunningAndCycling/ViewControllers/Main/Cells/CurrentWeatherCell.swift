@@ -7,11 +7,11 @@
 
 import UIKit
 
-class WeatherTableViewCell: UITableViewCell {
+class CurrentWeatherCell: UITableViewCell {
 
-    static let identifier = "WeatherTableViewCell"
+    static let identifier = "CurrentWeatherCell"
     
-    let containerView: UIView = {
+    private let containerView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
@@ -49,7 +49,7 @@ class WeatherTableViewCell: UITableViewCell {
         return label
     }()
     
-    let currentFellingTempLabel: UILabel = {
+    let currentFellTempLabel: UILabel = {
         let label = UILabel()
         label.textColor = .brown
         label.font = .systemFont(ofSize: 25)
@@ -75,7 +75,7 @@ class WeatherTableViewCell: UITableViewCell {
         return label
     }()
     
-    let descriptionLabel: UILabel = {
+    let weatherDescriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .blue
         label.font = .systemFont(ofSize: 16)
@@ -98,14 +98,14 @@ class WeatherTableViewCell: UITableViewCell {
         addSubview(containerView)
         
         containerView.addSubview(backgroundImageView)
-        containerView.addSubview(descriptionLabel)
+        containerView.addSubview(weatherDescriptionLabel)
         containerView.addSubview(weatherIcon)
         containerView.addSubview(windIcon)
         containerView.addSubview(currentTempLabel)
-        containerView.addSubview(currentFellingTempLabel)
+        containerView.addSubview(currentFellTempLabel)
         containerView.addSubview(tempDescriptionLabel)
         containerView.addSubview(windDescriptionLabel)
-        containerView.addSubview(descriptionLabel)
+        containerView.addSubview(weatherDescriptionLabel)
         
         containerView.snp.makeConstraints { make in
             make.top.equalToSuperview()
@@ -130,19 +130,19 @@ class WeatherTableViewCell: UITableViewCell {
         currentTempLabel.backgroundColor = .red
         currentTempLabel.text = "+ 18º"
         
-        currentFellingTempLabel.snp.makeConstraints { make in
+        currentFellTempLabel.snp.makeConstraints { make in
             make.top.equalTo(currentTempLabel.snp.bottom).offset(4.0)
             make.leading.equalTo(currentTempLabel.snp.leading)
             make.trailing.equalTo(currentTempLabel.snp.trailing)
         }
         
-        currentFellingTempLabel.backgroundColor = .red
-        currentFellingTempLabel.text = "+ 15º"
+        currentFellTempLabel.backgroundColor = .red
+        currentFellTempLabel.text = "+ 15º"
         
         tempDescriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(currentFellingTempLabel.snp.bottom)
-            make.leading.equalTo(currentFellingTempLabel.snp.leading)
-            make.trailing.equalTo(currentFellingTempLabel.snp.trailing)
+            make.top.equalTo(currentFellTempLabel.snp.bottom)
+            make.leading.equalTo(currentFellTempLabel.snp.leading)
+            make.trailing.equalTo(currentFellTempLabel.snp.trailing)
         }
         
         tempDescriptionLabel.backgroundColor = .red
@@ -162,14 +162,14 @@ class WeatherTableViewCell: UITableViewCell {
         }
         windIcon.backgroundColor = .red
         
-        descriptionLabel.snp.makeConstraints { make in
+        weatherDescriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(weatherIcon.snp.bottom).offset(8.0)
             make.trailing.leading.bottom.equalToSuperview().inset(8.0)
             make.height.equalTo(80)
             
         }
-        descriptionLabel.text = "scskjc vbskcvjb sdckjb cdcvkv we wefwe weofiwpoef iwp fewp ifp]w ief[uweckjecbywec"
-        descriptionLabel.backgroundColor = .red
+        weatherDescriptionLabel.text = "scskjc vbskcvjb sdckjb cdcvkv we wefwe weofiwpoef iwp fewp ifp]w ief[uweckjecbywec"
+        weatherDescriptionLabel.backgroundColor = .red
     }
     
     
