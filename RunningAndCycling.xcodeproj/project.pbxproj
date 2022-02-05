@@ -7,23 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A56B831C0EAD5C4E78FF197 /* Pods_RunningAndCycling.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E0668FA8072549654A29625 /* Pods_RunningAndCycling.framework */; };
 		B49B859627AB023900C8D864 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49B859527AB023900C8D864 /* AppDelegate.swift */; };
 		B49B859827AB023900C8D864 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49B859727AB023900C8D864 /* SceneDelegate.swift */; };
-		B49B859A27AB023900C8D864 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49B859927AB023900C8D864 /* ViewController.swift */; };
-		B49B859D27AB023900C8D864 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B49B859B27AB023900C8D864 /* Main.storyboard */; };
+		B49B859A27AB023900C8D864 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49B859927AB023900C8D864 /* MainViewController.swift */; };
 		B49B859F27AB023D00C8D864 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B49B859E27AB023D00C8D864 /* Assets.xcassets */; };
 		B49B85A227AB023D00C8D864 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B49B85A027AB023D00C8D864 /* LaunchScreen.storyboard */; };
+		B49B85AD27AB0DAE00C8D864 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B49B85AC27AB0DAE00C8D864 /* MainViewController.xib */; };
+		B49B85B027AB14BD00C8D864 /* RunningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49B85AE27AB14BD00C8D864 /* RunningViewController.swift */; };
+		B49B85B127AB14BD00C8D864 /* RunningViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B49B85AF27AB14BD00C8D864 /* RunningViewController.xib */; };
+		B49B85B427AB14E700C8D864 /* CyclingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49B85B227AB14E700C8D864 /* CyclingViewController.swift */; };
+		B49B85B527AB14E700C8D864 /* CyclingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B49B85B327AB14E700C8D864 /* CyclingViewController.xib */; };
+		B49B85B927AC39A800C8D864 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49B85B827AC39A800C8D864 /* TabBarController.swift */; };
+		B49B85BB27AC3C5100C8D864 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49B85BA27AC3C5100C8D864 /* ProfileViewController.swift */; };
+		B49B85C227AC448900C8D864 /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49B85C127AC448800C8D864 /* WeatherTableViewCell.swift */; };
+		B49B85C527AC48A500C8D864 /* MainWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B49B85C427AC48A500C8D864 /* MainWeatherViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		898595D49487A80AA2A7A62C /* Pods-RunningAndCycling.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningAndCycling.release.xcconfig"; path = "Target Support Files/Pods-RunningAndCycling/Pods-RunningAndCycling.release.xcconfig"; sourceTree = "<group>"; };
+		8FCA83BEAF29305E53EBDA47 /* Pods-RunningAndCycling.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningAndCycling.debug.xcconfig"; path = "Target Support Files/Pods-RunningAndCycling/Pods-RunningAndCycling.debug.xcconfig"; sourceTree = "<group>"; };
+		9E0668FA8072549654A29625 /* Pods_RunningAndCycling.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningAndCycling.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B49B859227AB023900C8D864 /* RunningAndCycling.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningAndCycling.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B49B859527AB023900C8D864 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B49B859727AB023900C8D864 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B49B859927AB023900C8D864 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B49B859C27AB023900C8D864 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B49B859927AB023900C8D864 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B49B859E27AB023D00C8D864 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B49B85A127AB023D00C8D864 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B49B85A327AB023D00C8D864 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B49B85AC27AB0DAE00C8D864 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		B49B85AE27AB14BD00C8D864 /* RunningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningViewController.swift; sourceTree = "<group>"; };
+		B49B85AF27AB14BD00C8D864 /* RunningViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RunningViewController.xib; sourceTree = "<group>"; };
+		B49B85B227AB14E700C8D864 /* CyclingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclingViewController.swift; sourceTree = "<group>"; };
+		B49B85B327AB14E700C8D864 /* CyclingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CyclingViewController.xib; sourceTree = "<group>"; };
+		B49B85B827AC39A800C8D864 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		B49B85BA27AC3C5100C8D864 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		B49B85C127AC448800C8D864 /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
+		B49B85C427AC48A500C8D864 /* MainWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeatherViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +51,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A56B831C0EAD5C4E78FF197 /* Pods_RunningAndCycling.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9DA477835659866D771DD167 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8FCA83BEAF29305E53EBDA47 /* Pods-RunningAndCycling.debug.xcconfig */,
+				898595D49487A80AA2A7A62C /* Pods-RunningAndCycling.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B49B858927AB023900C8D864 = {
 			isa = PBXGroup;
 			children = (
 				B49B859427AB023900C8D864 /* RunningAndCycling */,
 				B49B859327AB023900C8D864 /* Products */,
+				9DA477835659866D771DD167 /* Pods */,
+				C175BF12AFAD81CB5AF34108 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,9 +88,9 @@
 		B49B859427AB023900C8D864 /* RunningAndCycling */ = {
 			isa = PBXGroup;
 			children = (
+				B49B85B727AC392F00C8D864 /* Navigation */,
+				B49B85B627AB151F00C8D864 /* ViewControllers */,
 				B49B85A927AB026900C8D864 /* Support */,
-				B49B859927AB023900C8D864 /* ViewController.swift */,
-				B49B859B27AB023900C8D864 /* Main.storyboard */,
 				B49B85A327AB023D00C8D864 /* Info.plist */,
 			);
 			path = RunningAndCycling;
@@ -75,6 +107,78 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
+		B49B85B627AB151F00C8D864 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B49B85BC27AC40AD00C8D864 /* Main */,
+				B49B85BE27AC40DC00C8D864 /* Cycling */,
+				B49B85BD27AC40C200C8D864 /* Running */,
+				B49B85BF27AC40F000C8D864 /* Profile */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		B49B85B727AC392F00C8D864 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				B49B85B827AC39A800C8D864 /* TabBarController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		B49B85BC27AC40AD00C8D864 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				B49B85C027AC43DC00C8D864 /* Cells */,
+				B49B859927AB023900C8D864 /* MainViewController.swift */,
+				B49B85AC27AB0DAE00C8D864 /* MainViewController.xib */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		B49B85BD27AC40C200C8D864 /* Running */ = {
+			isa = PBXGroup;
+			children = (
+				B49B85AE27AB14BD00C8D864 /* RunningViewController.swift */,
+				B49B85B327AB14E700C8D864 /* CyclingViewController.xib */,
+			);
+			path = Running;
+			sourceTree = "<group>";
+		};
+		B49B85BE27AC40DC00C8D864 /* Cycling */ = {
+			isa = PBXGroup;
+			children = (
+				B49B85B227AB14E700C8D864 /* CyclingViewController.swift */,
+				B49B85AF27AB14BD00C8D864 /* RunningViewController.xib */,
+			);
+			path = Cycling;
+			sourceTree = "<group>";
+		};
+		B49B85BF27AC40F000C8D864 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				B49B85BA27AC3C5100C8D864 /* ProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		B49B85C027AC43DC00C8D864 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B49B85C427AC48A500C8D864 /* MainWeatherViewModel.swift */,
+				B49B85C127AC448800C8D864 /* WeatherTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		C175BF12AFAD81CB5AF34108 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9E0668FA8072549654A29625 /* Pods_RunningAndCycling.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +186,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B49B85A627AB023D00C8D864 /* Build configuration list for PBXNativeTarget "RunningAndCycling" */;
 			buildPhases = (
+				C835538AD55DE73B0DA8B369 /* [CP] Check Pods Manifest.lock */,
 				B49B858E27AB023900C8D864 /* Sources */,
 				B49B858F27AB023900C8D864 /* Frameworks */,
 				B49B859027AB023900C8D864 /* Resources */,
+				7F4F458C479555FEEBF90472 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -134,20 +240,70 @@
 			buildActionMask = 2147483647;
 			files = (
 				B49B85A227AB023D00C8D864 /* LaunchScreen.storyboard in Resources */,
+				B49B85AD27AB0DAE00C8D864 /* MainViewController.xib in Resources */,
+				B49B85B527AB14E700C8D864 /* CyclingViewController.xib in Resources */,
+				B49B85B127AB14BD00C8D864 /* RunningViewController.xib in Resources */,
 				B49B859F27AB023D00C8D864 /* Assets.xcassets in Resources */,
-				B49B859D27AB023900C8D864 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7F4F458C479555FEEBF90472 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RunningAndCycling/Pods-RunningAndCycling-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RunningAndCycling/Pods-RunningAndCycling-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RunningAndCycling/Pods-RunningAndCycling-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C835538AD55DE73B0DA8B369 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RunningAndCycling-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B49B858E27AB023900C8D864 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B49B859A27AB023900C8D864 /* ViewController.swift in Sources */,
+				B49B85C227AC448900C8D864 /* WeatherTableViewCell.swift in Sources */,
+				B49B859A27AB023900C8D864 /* MainViewController.swift in Sources */,
+				B49B85B927AC39A800C8D864 /* TabBarController.swift in Sources */,
+				B49B85BB27AC3C5100C8D864 /* ProfileViewController.swift in Sources */,
+				B49B85B427AB14E700C8D864 /* CyclingViewController.swift in Sources */,
+				B49B85C527AC48A500C8D864 /* MainWeatherViewModel.swift in Sources */,
 				B49B859627AB023900C8D864 /* AppDelegate.swift in Sources */,
+				B49B85B027AB14BD00C8D864 /* RunningViewController.swift in Sources */,
 				B49B859827AB023900C8D864 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -155,14 +311,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		B49B859B27AB023900C8D864 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B49B859C27AB023900C8D864 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		B49B85A027AB023D00C8D864 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -292,6 +440,7 @@
 		};
 		B49B85A727AB023D00C8D864 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8FCA83BEAF29305E53EBDA47 /* Pods-RunningAndCycling.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,7 +451,6 @@
 				INFOPLIST_FILE = RunningAndCycling/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -321,6 +469,7 @@
 		};
 		B49B85A827AB023D00C8D864 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 898595D49487A80AA2A7A62C /* Pods-RunningAndCycling.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -331,7 +480,6 @@
 				INFOPLIST_FILE = RunningAndCycling/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
