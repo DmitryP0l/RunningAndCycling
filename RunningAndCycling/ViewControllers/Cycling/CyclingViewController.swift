@@ -11,6 +11,7 @@ class CyclingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "велопрогулка"
 
         // Do any additional setup after loading the view.
     }

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class HourlyWeatherCell: UITableViewCell {
+final class HourlyWeatherCell: UITableViewCell {
     
     static let identifier = "HourlyWeatherCell"
     
@@ -18,6 +18,8 @@ class HourlyWeatherCell: UITableViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.isUserInteractionEnabled = true
+        view.isScrollEnabled = true
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(HourlyWeatherCollectionViewCell.self, forCellWithReuseIdentifier: HourlyWeatherCollectionViewCell.identifier)
         return view
@@ -26,6 +28,7 @@ class HourlyWeatherCell: UITableViewCell {
     private let containerView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10
+        view.isUserInteractionEnabled = true
         view.clipsToBounds = true
         return view
     }()
@@ -42,25 +45,33 @@ class HourlyWeatherCell: UITableViewCell {
     
     private func setupView() {
         addSubview(containerView)
-        containerView.snp.makeConstraints { make in
+        
+        
+    containerView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.trailing.bottom.equalToSuperview().inset(4)
             make.height.equalTo(80.0)
         }
         containerView.backgroundColor = .red
-
     }
     
     private func setupCollectionView() {
-        containerView.addSubview(collectionView)
+//        containerView.addSubview(collectionView)
+        
+        
+        contentView.addSubview(collectionView)
+        
+        collectionView.isUserInteractionEnabled = true
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(containerView.snp.edges)
         }
     }
+
 }
 
+//MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension HourlyWeatherCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -9,7 +9,6 @@ import UIKit
 
 class TabBarController: UITabBarController, UITabBarControllerDelegate {
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
@@ -20,29 +19,25 @@ class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let mainViewController = UINavigationController(rootViewController: MainViewController())
-        let iconFirstVC = UITabBarItem(title: "", image: UIImage(systemName: "list.bullet.rectangle"), selectedImage: UIImage(systemName: "list.bullet.rectangle.fill"))
-        mainViewController.tabBarItem = iconFirstVC
+        let mainVC = UINavigationController(rootViewController: MainViewController())
+        let iconFirstVC = UITabBarItem(title: "", image: UIImage(systemName: "list.bullet.rectangle"), selectedImage: UIImage(systemName: "list.bullet.rectangle"))
+        mainVC.tabBarItem = iconFirstVC
 
-        let runningViewController = UINavigationController(rootViewController: RunningViewController())
-        let iconSecondVC = UITabBarItem(title: "", image: UIImage(systemName: "clock"), selectedImage: UIImage(systemName: "clock.fill"))
-        runningViewController.tabBarItem = iconSecondVC
+        let runningVC = UINavigationController(rootViewController: RunningViewController())
+        let iconSecondVC = UITabBarItem(title: "", image: UIImage(systemName: "figure.walk"), selectedImage: UIImage(systemName: "figure.walk"))
+        runningVC.tabBarItem = iconSecondVC
 
-        let cyclingViewController = UINavigationController(rootViewController: CyclingViewController())
-        let iconFourthVC = UITabBarItem(title: "", image: UIImage(systemName: "bell"), selectedImage: UIImage(systemName: "bell.fill"))
-        cyclingViewController.tabBarItem = iconFourthVC
+        let cyclingVC = UINavigationController(rootViewController: CyclingViewController())
+        let iconFourthVC = UITabBarItem(title: "", image: UIImage(systemName: "bicycle"), selectedImage: UIImage(systemName: "bicycle"))
+        cyclingVC.tabBarItem = iconFourthVC
 
         let profileVC = UINavigationController(rootViewController: ProfileViewController())
-        let iconFifthVC = UITabBarItem(title: "", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+        let iconFifthVC = UITabBarItem(title: "", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person"))
         profileVC.tabBarItem = iconFifthVC
 
         
-        let controllers = [mainViewController, runningViewController, cyclingViewController, profileVC]
+        let controllers = [mainVC, runningVC, cyclingVC, profileVC]
         self.viewControllers = controllers
-        
-        // как "снимать" размеры tabbar item, чтобы не прописывать их руками?
-        // как закрепить к tabbar item-у кастомную кнопку?
-        //можно ли вообще прикрутить к tabbar item-у функционал вызова алертконтроллера, чтобы не заниматься всей этой фигней с "ширмой" в виде кнопки?
     }
     
     //Delegate methods

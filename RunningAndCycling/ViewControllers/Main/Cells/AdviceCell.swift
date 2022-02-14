@@ -1,16 +1,17 @@
 //
-//  AchievementTableViewCell.swift
+//  AdviceCell.swift
 //  RunningAndCycling
 //
-//  Created by lion on 5.02.22.
+//  Created by lion on 6.02.22.
 //
 
 import UIKit
+import SnapKit
 
-final class AchievementCell: UITableViewCell {
+class AdviceCell: UITableViewCell {
+
+    static let identifier = "AdviceCell"
     
-    static let identifier = "AchievementCell"
-
     private let containerView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10
@@ -38,4 +39,5 @@ final class AchievementCell: UITableViewCell {
         containerView.backgroundColor = .red
     }
 
+    
 }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CurrentWeatherCell: UITableViewCell {
+final class CurrentWeatherCell: UITableViewCell {
 
     static let identifier = "CurrentWeatherCell"
     
@@ -171,7 +171,4 @@ class CurrentWeatherCell: UITableViewCell {
         weatherDescriptionLabel.text = "scskjc vbskcvjb sdckjb cdcvkv we wefwe weofiwpoef iwp fewp ifp]w ief[uweckjecbywec"
         weatherDescriptionLabel.backgroundColor = .red
     }
-    
-    
-    
 }
