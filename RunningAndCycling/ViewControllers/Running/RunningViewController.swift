@@ -11,7 +11,7 @@ class RunningViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-title = "пробежка"
+        navigationItem.title = "пробежка"
         // Do any additional setup after loading the view.
     }
 

@@ -10,6 +10,6 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     override func viewDidLoad() {
-        title = "Профиль"
+        navigationItem.title = "Профиль"
     }
 }

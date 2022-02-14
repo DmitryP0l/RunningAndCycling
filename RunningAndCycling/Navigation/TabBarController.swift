@@ -7,42 +7,65 @@
 
 import UIKit
 
-class TabBarController: UITabBarController, UITabBarControllerDelegate {
+class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
+    //    delegate = self
+        setupTabBarItems()
+        setupUI()
+        
+    }
+    
+    private func setupUI() {
         view.backgroundColor = .systemBackground
         UITabBar.appearance().barTintColor = .systemBackground
         tabBar.tintColor = .label
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        let mainVC = UINavigationController(rootViewController: MainViewController())
-        let iconFirstVC = UITabBarItem(title: "", image: UIImage(systemName: "list.bullet.rectangle"), selectedImage: UIImage(systemName: "list.bullet.rectangle"))
-        mainVC.tabBarItem = iconFirstVC
-
-        let runningVC = UINavigationController(rootViewController: RunningViewController())
-        let iconSecondVC = UITabBarItem(title: "", image: UIImage(systemName: "figure.walk"), selectedImage: UIImage(systemName: "figure.walk"))
-        runningVC.tabBarItem = iconSecondVC
-
-        let cyclingVC = UINavigationController(rootViewController: CyclingViewController())
-        let iconFourthVC = UITabBarItem(title: "", image: UIImage(systemName: "bicycle"), selectedImage: UIImage(systemName: "bicycle"))
-        cyclingVC.tabBarItem = iconFourthVC
-
-        let profileVC = UINavigationController(rootViewController: ProfileViewController())
-        let iconFifthVC = UITabBarItem(title: "", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person"))
-        profileVC.tabBarItem = iconFifthVC
-
+    
+    private func setupTabBarItems() {
+        let mainVC = configureTabBarItem(rootViewController: MainViewController(), tag: 0,
+                                            image: UIImage(systemName: "list.bullet.rectangle"),
+                                            selectedImage: UIImage(systemName: "list.bullet.rectangle"))
+        let runningVC = configureTabBarItem(rootViewController: RunningViewController(), tag: 1,
+                                            image: UIImage(systemName: "figure.walk"),
+                                            selectedImage: UIImage(systemName: "figure.walk"))
+        let cyclingVC = configureTabBarItem(rootViewController: CyclingViewController(), tag: 2,
+                                            image: UIImage(systemName: "bicycle"),
+                                            selectedImage: UIImage(systemName: "bicycle"))
+        let profileVC = configureTabBarItem(rootViewController: ProfileViewController(), tag: 3,
+                                            image: UIImage(systemName: "person"),
+                                            selectedImage: UIImage(systemName: "person"))
         
         let controllers = [mainVC, runningVC, cyclingVC, profileVC]
         self.viewControllers = controllers
     }
     
-    //Delegate methods
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-        print("Should select viewController: \(viewController.title ?? "") ?")
-        return true;
+    private func configureTabBarItem(rootViewController: UIViewController,
+                                     tag: Int,
+                                     image: UIImage?,
+                                     selectedImage: UIImage?) -> NavigationBarController {
+        let controller = NavigationBarController(rootViewController: rootViewController)
+        let controllerIcon = UITabBarItem(title: "", image: image, selectedImage: selectedImage)
+        controller.tabBarItem = controllerIcon
+        controller.tabBarItem.tag = tag
+        
+        return controller
     }
 }
+// можем отслеживать нажатия по тегу контроллера
+//MARK: - UITabBarControllerDelegate
+//extension TabBarController: UITabBarControllerDelegate {
+//
+//    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+//
+//            if viewController.tabBarItem.tag == 2 {
+//                selectedIndex = 0
+//                DispatchQueue.main.async {
+//                    NotificationCenter.default.post(name: .CreateTask, object: nil)
+//                }
+//                return false
+//            }
+//            return true
+//        }
+//}

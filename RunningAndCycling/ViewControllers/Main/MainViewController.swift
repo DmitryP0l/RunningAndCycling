@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "главная страница"
+        navigationItem.title = "главная страница"
         setupTableView()
     }
 
