@@ -11,8 +11,8 @@ import SnapKit
 final class HourlyWeatherCell: UITableViewCell {
     
     static let identifier = "HourlyWeatherCell"
-    
-    let dataSource:[String] = ["", "", "", "", "", "", "", "", ""]
+
+    private var dataSource:[WeatherModel] = []
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -56,34 +56,36 @@ final class HourlyWeatherCell: UITableViewCell {
     }
     
     private func setupCollectionView() {
-//        containerView.addSubview(collectionView)
-        
         
         contentView.addSubview(collectionView)
-        
-        collectionView.isUserInteractionEnabled = true
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(containerView.snp.edges)
         }
     }
-
+    
+    func setupWith(hourlyWeatherModel: [WeatherModel]) {
+        self.dataSource = hourlyWeatherModel
+        collectionView.reloadData()
+    }
 }
 
 //MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension HourlyWeatherCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/4, height: collectionView.frame.width/4)
-    }
-
+           return CGSize(width: 100, height: 150)
+       }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataSource.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyWeatherCollectionViewCell.identifier, for: indexPath) as! HourlyWeatherCollectionViewCell
+        cell.setupWith(hoursWeather: dataSource[indexPath.row])
         return cell
     }
+    
 }

@@ -11,6 +11,7 @@ final class CurrentWeatherCell: UITableViewCell {
 
     static let identifier = "CurrentWeatherCell"
     
+ //MARK: - Create UIView
     private let containerView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10
@@ -18,21 +19,21 @@ final class CurrentWeatherCell: UITableViewCell {
         return view
     }()
     
-    let backgroundImageView: UIImageView = {
+    private let backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "backImage")
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
-    let weatherIcon: UIImageView = {
+    private let weatherIcon: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(systemName: "sun.dust")
         return imageView
     }()
     
-    let windIcon: UIImageView = {
+    private let windIcon: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "wind")
         imageView.contentMode = .scaleAspectFit
@@ -40,7 +41,7 @@ final class CurrentWeatherCell: UITableViewCell {
         return imageView
     }()
     
-    let currentTempLabel: UILabel = {
+    private let currentTempLabel: UILabel = {
         let label = UILabel()
         label.textColor = .green
         label.font = .systemFont(ofSize: 18)
@@ -49,7 +50,7 @@ final class CurrentWeatherCell: UITableViewCell {
         return label
     }()
     
-    let currentFellTempLabel: UILabel = {
+    private let currentFellTempLabel: UILabel = {
         let label = UILabel()
         label.textColor = .brown
         label.font = .systemFont(ofSize: 25)
@@ -58,7 +59,7 @@ final class CurrentWeatherCell: UITableViewCell {
         return label
     }()
     
-    let tempDescriptionLabel: UILabel = {
+    private let tempDescriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "По ощущениям: "
         label.textColor = .blue
@@ -67,7 +68,7 @@ final class CurrentWeatherCell: UITableViewCell {
         return label
     }()
     
-    let windDescriptionLabel: UILabel = {
+    private let windDescriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .blue
         label.font = .systemFont(ofSize: 14)
@@ -75,7 +76,7 @@ final class CurrentWeatherCell: UITableViewCell {
         return label
     }()
     
-    let weatherDescriptionLabel: UILabel = {
+    private let weatherDescriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor = .blue
         label.font = .systemFont(ofSize: 16)
@@ -83,6 +84,7 @@ final class CurrentWeatherCell: UITableViewCell {
         label.textAlignment = .center
         return label
     }()
+   
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -93,7 +95,7 @@ final class CurrentWeatherCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
+    //MARK: - Setup UIView
     private func setupView() {
         addSubview(containerView)
         
@@ -117,7 +119,7 @@ final class CurrentWeatherCell: UITableViewCell {
         }
         
         weatherIcon.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.4) // ширина равна супервью
+            make.width.equalToSuperview().multipliedBy(0.4) // ширина равна супервью на 0.4
             make.height.equalTo(weatherIcon.snp.width)
             make.top.leading.equalToSuperview().inset(8.0)
         }
@@ -128,7 +130,7 @@ final class CurrentWeatherCell: UITableViewCell {
             make.leading.equalTo(weatherIcon.snp.trailing).offset(8.0)
         }
         currentTempLabel.backgroundColor = .red
-        currentTempLabel.text = "+ 18º"
+        currentTempLabel.text = "+ 100º"
         
         currentFellTempLabel.snp.makeConstraints { make in
             make.top.equalTo(currentTempLabel.snp.bottom).offset(4.0)
@@ -137,7 +139,7 @@ final class CurrentWeatherCell: UITableViewCell {
         }
         
         currentFellTempLabel.backgroundColor = .red
-        currentFellTempLabel.text = "+ 15º"
+        currentFellTempLabel.text = "+ 100º"
         
         tempDescriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(currentFellTempLabel.snp.bottom)
@@ -170,5 +172,14 @@ final class CurrentWeatherCell: UITableViewCell {
         }
         weatherDescriptionLabel.text = "scskjc vbskcvjb sdckjb cdcvkv we wefwe weofiwpoef iwp fewp ifp]w ief[uweckjecbywec"
         weatherDescriptionLabel.backgroundColor = .red
+    }
+    
+    func setupWith(currentWeather: WeatherModel) {
+        currentTempLabel.text = currentWeather.temperature
+        currentFellTempLabel.text = currentWeather.fellsLikeTemperature
+        weatherDescriptionLabel.text = currentWeather.weatherDescription
+        windDescriptionLabel.text = "\(currentWeather.windSpeed), направление: \(currentWeather.windDirectionString)"
+        weatherIcon.image = UIImage(systemName: currentWeather.systemIconNameString) 
+        
     }
 }
