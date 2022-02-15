@@ -11,6 +11,6 @@ import UIKit
 struct AdviceModel {
     let advice: String?
     init() {
-        advice = "больше бегать"
+        advice = "погодка не айс, сиди дома"
     }
 }

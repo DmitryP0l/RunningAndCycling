@@ -40,7 +40,6 @@ struct APIManager {
             } else {
                 completion(nil)
             }
-            
         }
     }
 }

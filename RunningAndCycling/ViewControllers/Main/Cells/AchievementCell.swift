@@ -10,12 +10,20 @@ import UIKit
 final class AchievementCell: UITableViewCell {
     
     static let identifier = "AchievementCell"
-
+    
     private let containerView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
         return view
+    }()
+    
+    private let achievlabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 18)
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        return label
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -28,14 +36,23 @@ final class AchievementCell: UITableViewCell {
     }
     
     private func setupView() {
-       addSubview(containerView)
+        addSubview(containerView)
+        containerView.addSubview(achievlabel)
         
         containerView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.trailing.bottom.equalToSuperview().inset(16)
             make.height.equalTo(60.0)
         }
-        containerView.backgroundColor = .red
+        containerView.backgroundColor = .green
+        
+        achievlabel.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(8.0)
+            
+            make.centerX.equalTo(containerView.snp.centerX)
+            make.centerY.equalTo(containerView.snp.centerY)
+            
+        }
     }
-
+    
 }

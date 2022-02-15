@@ -11,6 +11,9 @@
 		B41B3AE027BA742400C61AC9 /* NavigationBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3ADF27BA742400C61AC9 /* NavigationBarController.swift */; };
 		B41B3AE227BA825700C61AC9 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3AE127BA825700C61AC9 /* UserModel.swift */; };
 		B41B3AE427BA833F00C61AC9 /* AdviceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3AE327BA833F00C61AC9 /* AdviceModel.swift */; };
+		B41B3AE727BBCEB600C61AC9 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3AE627BBCEB600C61AC9 /* PhotoCell.swift */; };
+		B41B3AE927BBCEC900C61AC9 /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3AE827BBCEC900C61AC9 /* NameCell.swift */; };
+		B41B3AEB27BBD44F00C61AC9 /* AchievementsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3AEA27BBD44F00C61AC9 /* AchievementsCell.swift */; };
 		B464CF4227AFE2D5004AE9DC /* AdviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B464CF4127AFE2D5004AE9DC /* AdviceCell.swift */; };
 		B464CF4527AFE6B0004AE9DC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B464CF4427AFE6B0004AE9DC /* Alamofire */; };
 		B464CF5327AFF2A2004AE9DC /* Hourly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B464CF4B27AFF2A1004AE9DC /* Hourly.swift */; };
@@ -48,6 +51,9 @@
 		B41B3ADF27BA742400C61AC9 /* NavigationBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarController.swift; sourceTree = "<group>"; };
 		B41B3AE127BA825700C61AC9 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B41B3AE327BA833F00C61AC9 /* AdviceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceModel.swift; sourceTree = "<group>"; };
+		B41B3AE627BBCEB600C61AC9 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		B41B3AE827BBCEC900C61AC9 /* NameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
+		B41B3AEA27BBD44F00C61AC9 /* AchievementsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsCell.swift; sourceTree = "<group>"; };
 		B464CF4127AFE2D5004AE9DC /* AdviceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceCell.swift; sourceTree = "<group>"; };
 		B464CF4B27AFF2A1004AE9DC /* Hourly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hourly.swift; sourceTree = "<group>"; };
 		B464CF4C27AFF2A2004AE9DC /* Minutely.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Minutely.swift; sourceTree = "<group>"; };
@@ -99,6 +105,16 @@
 				898595D49487A80AA2A7A62C /* Pods-RunningAndCycling.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		B41B3AE527BBCE9900C61AC9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B41B3AE627BBCEB600C61AC9 /* PhotoCell.swift */,
+				B41B3AE827BBCEC900C61AC9 /* NameCell.swift */,
+				B41B3AEA27BBD44F00C61AC9 /* AchievementsCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		B464CF4927AFEFDB004AE9DC /* API Manager */ = {
@@ -218,6 +234,7 @@
 		B49B85BF27AC40F000C8D864 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				B41B3AE527BBCE9900C61AC9 /* Cells */,
 				B49B85BA27AC3C5100C8D864 /* ProfileViewController.swift */,
 			);
 			path = Profile;
@@ -390,6 +407,7 @@
 				B49B85CB27AF043800C8D864 /* AchievementCell.swift in Sources */,
 				B464CF5C27AFF4F8004AE9DC /* APIManager.swift in Sources */,
 				B49B85C227AC448900C8D864 /* CurrentWeatherCell.swift in Sources */,
+				B41B3AE727BBCEB600C61AC9 /* PhotoCell.swift in Sources */,
 				B464CF5727AFF2A2004AE9DC /* Weather.swift in Sources */,
 				B49B859A27AB023900C8D864 /* MainViewController.swift in Sources */,
 				B49B85B927AC39A800C8D864 /* TabBarController.swift in Sources */,
@@ -399,8 +417,10 @@
 				B49B85B427AB14E700C8D864 /* CyclingViewController.swift in Sources */,
 				B464CF5927AFF2A2004AE9DC /* Current.swift in Sources */,
 				B49B85C527AC48A500C8D864 /* WeatherModel.swift in Sources */,
+				B41B3AEB27BBD44F00C61AC9 /* AchievementsCell.swift in Sources */,
 				B41B3AE027BA742400C61AC9 /* NavigationBarController.swift in Sources */,
 				B49B859627AB023900C8D864 /* AppDelegate.swift in Sources */,
+				B41B3AE927BBCEC900C61AC9 /* NameCell.swift in Sources */,
 				B464CF5527AFF2A2004AE9DC /* Temp.swift in Sources */,
 				B41B3AE427BA833F00C61AC9 /* AdviceModel.swift in Sources */,
 				B464CF5627AFF2A2004AE9DC /* WeatherResponse.swift in Sources */,
