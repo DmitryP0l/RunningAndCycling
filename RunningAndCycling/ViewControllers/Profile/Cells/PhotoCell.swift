@@ -11,11 +11,18 @@ class PhotoCell: UITableViewCell {
     
     static let identifier = "PhotoCell"
     
-    private let containerView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 10
-        view.clipsToBounds = true
-        return view
+    var model: String? {
+        didSet {
+            if let model = model {
+                photoImageView.image = UIImage(named: model)
+            }
+        }
+    }
+    
+    private let photoImageView: UIImageView = {
+       let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFill
+        return imageView
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -29,14 +36,22 @@ class PhotoCell: UITableViewCell {
 
     
     private func setupView() {
-        addSubview(containerView)
-        
-        containerView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        addSubview(photoImageView)
+        photoImageView.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(16.0)
+            make.width.equalToSuperview().multipliedBy(0.3)
+            make.height.equalTo(photoImageView.snp.width)
+            make.centerX.equalToSuperview()
+        }
+
+        DispatchQueue.main.async {
+            self.photoImageView.layer.cornerRadius = self.photoImageView.frame.height/2
+            self.photoImageView.clipsToBounds = true
         }
         
-        containerView.backgroundColor = .red
-        
+        photoImageView.backgroundColor = .red
     }
+    
+    
     
 }

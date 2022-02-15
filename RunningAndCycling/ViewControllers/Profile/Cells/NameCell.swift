@@ -11,12 +11,23 @@ class NameCell: UITableViewCell {
     
     static let identifier = "NameCell"
     
-    private let containerView: UIView = {
-        let view = UIView()
-        view.layer.cornerRadius = 10
-        view.clipsToBounds = true
-        return view
+    var model: String? {
+        didSet {
+            if let model = model {
+                nameLabel.text = model
+            }
+        }
+    }
+    
+    private let nameLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .green
+        label.font = .systemFont(ofSize: 32)
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        return label
     }()
+   
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -28,13 +39,15 @@ class NameCell: UITableViewCell {
     }
 
     private func setupView() {
-        addSubview(containerView)
-        
-        containerView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+        addSubview(nameLabel)
+
+        nameLabel.snp.makeConstraints { make in
+            make.top.bottom.equalToSuperview().inset(8.0)
+            make.centerX.equalToSuperview()
         }
-        
-        containerView.backgroundColor = .blue
-        
+
+        nameLabel.backgroundColor = .blue
+        nameLabel.text = "dfgdg"
+
     }
 }
