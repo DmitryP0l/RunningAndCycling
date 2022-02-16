@@ -93,7 +93,7 @@ class AchievementsCell: UITableViewCell {
             make.leading.equalTo(cupImageView.snp.trailing).offset(8.0)
         }
         progressLabel.backgroundColor = .red
-        progressLabel.text = "пройдено 123 из 321"
+        progressLabel.text = "обогнал гепарда"
         
         progressView.snp.makeConstraints { make in
             make.top.equalTo(progressLabel.snp.bottom).offset(8.0)

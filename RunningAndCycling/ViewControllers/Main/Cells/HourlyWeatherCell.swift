@@ -18,9 +18,7 @@ final class HourlyWeatherCell: UITableViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        view.isUserInteractionEnabled = true
-        view.isScrollEnabled = true
-        view.translatesAutoresizingMaskIntoConstraints = false
+       // view.translatesAutoresizingMaskIntoConstraints = false
         view.register(HourlyWeatherCollectionViewCell.self, forCellWithReuseIdentifier: HourlyWeatherCollectionViewCell.identifier)
         return view
     }()
@@ -45,8 +43,6 @@ final class HourlyWeatherCell: UITableViewCell {
     
     private func setupView() {
         addSubview(containerView)
-        
-        
     containerView.snp.makeConstraints { make in
             make.top.equalToSuperview()
             make.leading.trailing.bottom.equalToSuperview().inset(4)
@@ -56,7 +52,6 @@ final class HourlyWeatherCell: UITableViewCell {
     }
     
     private func setupCollectionView() {
-        
         contentView.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self

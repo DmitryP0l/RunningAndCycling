@@ -15,6 +15,8 @@
 		B41B3AE927BBCEC900C61AC9 /* NameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3AE827BBCEC900C61AC9 /* NameCell.swift */; };
 		B41B3AEB27BBD44F00C61AC9 /* AchievementsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3AEA27BBD44F00C61AC9 /* AchievementsCell.swift */; };
 		B41B3AEE27BBDA3A00C61AC9 /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3AED27BBDA3A00C61AC9 /* ProfileModel.swift */; };
+		B41B3AF027BCD60500C61AC9 /* StatisticCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3AEF27BCD60500C61AC9 /* StatisticCell.swift */; };
+		B41B3AF327BCD83400C61AC9 /* StatisticCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3AF227BCD83400C61AC9 /* StatisticCollectionCell.swift */; };
 		B464CF4227AFE2D5004AE9DC /* AdviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B464CF4127AFE2D5004AE9DC /* AdviceCell.swift */; };
 		B464CF4527AFE6B0004AE9DC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B464CF4427AFE6B0004AE9DC /* Alamofire */; };
 		B464CF5327AFF2A2004AE9DC /* Hourly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B464CF4B27AFF2A1004AE9DC /* Hourly.swift */; };
@@ -56,6 +58,8 @@
 		B41B3AE827BBCEC900C61AC9 /* NameCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCell.swift; sourceTree = "<group>"; };
 		B41B3AEA27BBD44F00C61AC9 /* AchievementsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementsCell.swift; sourceTree = "<group>"; };
 		B41B3AED27BBDA3A00C61AC9 /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		B41B3AEF27BCD60500C61AC9 /* StatisticCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticCell.swift; sourceTree = "<group>"; };
+		B41B3AF227BCD83400C61AC9 /* StatisticCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticCollectionCell.swift; sourceTree = "<group>"; };
 		B464CF4127AFE2D5004AE9DC /* AdviceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceCell.swift; sourceTree = "<group>"; };
 		B464CF4B27AFF2A1004AE9DC /* Hourly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hourly.swift; sourceTree = "<group>"; };
 		B464CF4C27AFF2A2004AE9DC /* Minutely.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Minutely.swift; sourceTree = "<group>"; };
@@ -112,8 +116,10 @@
 		B41B3AE527BBCE9900C61AC9 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				B41B3AF127BCD7F000C61AC9 /* CollectionViewCell */,
 				B41B3AE627BBCEB600C61AC9 /* PhotoCell.swift */,
 				B41B3AE827BBCEC900C61AC9 /* NameCell.swift */,
+				B41B3AEF27BCD60500C61AC9 /* StatisticCell.swift */,
 				B41B3AEA27BBD44F00C61AC9 /* AchievementsCell.swift */,
 			);
 			path = Cells;
@@ -125,6 +131,14 @@
 				B41B3AED27BBDA3A00C61AC9 /* ProfileModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		B41B3AF127BCD7F000C61AC9 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				B41B3AF227BCD83400C61AC9 /* StatisticCollectionCell.swift */,
+			);
+			path = CollectionViewCell;
 			sourceTree = "<group>";
 		};
 		B464CF4927AFEFDB004AE9DC /* API Manager */ = {
@@ -429,6 +443,7 @@
 				B49B85B427AB14E700C8D864 /* CyclingViewController.swift in Sources */,
 				B464CF5927AFF2A2004AE9DC /* Current.swift in Sources */,
 				B49B85C527AC48A500C8D864 /* WeatherModel.swift in Sources */,
+				B41B3AF027BCD60500C61AC9 /* StatisticCell.swift in Sources */,
 				B41B3AEB27BBD44F00C61AC9 /* AchievementsCell.swift in Sources */,
 				B41B3AE027BA742400C61AC9 /* NavigationBarController.swift in Sources */,
 				B49B859627AB023900C8D864 /* AppDelegate.swift in Sources */,
@@ -439,6 +454,7 @@
 				B49B85C927AEFCAB00C8D864 /* HourlyWeatherCollectionViewCell.swift in Sources */,
 				B49B85B027AB14BD00C8D864 /* RunningViewController.swift in Sources */,
 				B49B859827AB023900C8D864 /* SceneDelegate.swift in Sources */,
+				B41B3AF327BCD83400C61AC9 /* StatisticCollectionCell.swift in Sources */,
 				B464CF4227AFE2D5004AE9DC /* AdviceCell.swift in Sources */,
 				B464CF5A27AFF2A2004AE9DC /* Daily.swift in Sources */,
 			);
