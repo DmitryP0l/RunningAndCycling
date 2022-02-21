@@ -42,7 +42,7 @@ class MainViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         tableView.isUserInteractionEnabled = true
-        tableView.register(AchievementCell.self, forCellReuseIdentifier: AchievementCell.identifier)
+        tableView.register(UserCell.self, forCellReuseIdentifier: UserCell.identifier)
         tableView.register(CurrentWeatherCell.self, forCellReuseIdentifier: CurrentWeatherCell.identifier)
         tableView.register(HourlyWeatherCell.self, forCellReuseIdentifier: HourlyWeatherCell.identifier)
         tableView.register(AdviceCell.self, forCellReuseIdentifier: AdviceCell.identifier)
@@ -69,7 +69,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         switch dataSource[indexPath.row] {
 
         case .achievUser(user: let user):
-            let cell = tableView.dequeueReusableCell(withIdentifier: AchievementCell.identifier, for: indexPath) as! AchievementCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: UserCell.identifier, for: indexPath) as! UserCell
             cell.textLabel?.text = "ачивки юзера, ссыль на профиль, может динамическая ячейка"
             return cell
         case .currentWeather(day: let day):

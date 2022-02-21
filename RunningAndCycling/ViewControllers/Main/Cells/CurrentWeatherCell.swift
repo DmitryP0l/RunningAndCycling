@@ -23,6 +23,7 @@ final class CurrentWeatherCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "backImage")
         imageView.contentMode = .scaleAspectFill
+        imageView.alpha = 0.3
         return imageView
     }()
     
@@ -43,8 +44,8 @@ final class CurrentWeatherCell: UITableViewCell {
     
     private let currentTempLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .green
-        label.font = .systemFont(ofSize: 18)
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 24)
         label.numberOfLines = 1
         label.textAlignment = .center
         return label
@@ -52,8 +53,8 @@ final class CurrentWeatherCell: UITableViewCell {
     
     private let currentFellTempLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .brown
-        label.font = .systemFont(ofSize: 25)
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 32)
         label.numberOfLines = 1
         label.textAlignment = .center
         return label
@@ -119,18 +120,16 @@ final class CurrentWeatherCell: UITableViewCell {
         }
         
         weatherIcon.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.4) // ширина равна супервью на 0.4
+            make.width.equalToSuperview().multipliedBy(0.4)
             make.height.equalTo(weatherIcon.snp.width)
             make.top.leading.equalToSuperview().inset(8.0)
         }
-        weatherIcon.backgroundColor = .red
         
         currentTempLabel.snp.makeConstraints { make in
             make.top.trailing.equalToSuperview().inset(8.0)
             make.leading.equalTo(weatherIcon.snp.trailing).offset(8.0)
         }
-        currentTempLabel.backgroundColor = .red
-        currentTempLabel.text = "+ 100º"
+        
         
         currentFellTempLabel.snp.makeConstraints { make in
             make.top.equalTo(currentTempLabel.snp.bottom).offset(4.0)
@@ -138,8 +137,7 @@ final class CurrentWeatherCell: UITableViewCell {
             make.trailing.equalTo(currentTempLabel.snp.trailing)
         }
         
-        currentFellTempLabel.backgroundColor = .red
-        currentFellTempLabel.text = "+ 100º"
+      
         
         tempDescriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(currentFellTempLabel.snp.bottom)
@@ -147,14 +145,10 @@ final class CurrentWeatherCell: UITableViewCell {
             make.trailing.equalTo(currentFellTempLabel.snp.trailing)
         }
         
-        tempDescriptionLabel.backgroundColor = .red
-        
         windDescriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(tempDescriptionLabel.snp.bottom).offset(8.0)
             make.trailing.equalTo(tempDescriptionLabel.snp.trailing)
         }
-        windDescriptionLabel.text = "сильно дует"
-        windDescriptionLabel.backgroundColor = .red
         
         windIcon.snp.makeConstraints { make in
             make.trailing.equalTo(windDescriptionLabel.snp.leading).inset(-4.0)
@@ -162,7 +156,6 @@ final class CurrentWeatherCell: UITableViewCell {
             make.width.equalTo(windIcon.snp.height).multipliedBy(1.5)
             make.centerY.equalTo(windDescriptionLabel.snp.centerY)
         }
-        windIcon.backgroundColor = .red
         
         weatherDescriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(weatherIcon.snp.bottom).offset(8.0)
@@ -170,12 +163,10 @@ final class CurrentWeatherCell: UITableViewCell {
             make.height.equalTo(80)
             
         }
-        weatherDescriptionLabel.text = "scskjc vbskcvjb sdckjb cdcvkv we wefwe weofiwpoef iwp fewp ifp]w ief[uweckjecbywec"
-        weatherDescriptionLabel.backgroundColor = .red
     }
     
     func setupWith(currentWeather: WeatherModel) {
-        currentTempLabel.text = currentWeather.temperature
+        currentTempLabel.text = "temp: \(currentWeather.temperature)"
         currentFellTempLabel.text = currentWeather.fellsLikeTemperature
         weatherDescriptionLabel.text = currentWeather.weatherDescription
         windDescriptionLabel.text = "\(currentWeather.windSpeed), направление: \(currentWeather.windDirectionString)"

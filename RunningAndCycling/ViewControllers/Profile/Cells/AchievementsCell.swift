@@ -11,6 +11,15 @@ class AchievementsCell: UITableViewCell {
     
     static let identifier = "AchievementsCell"
     
+    var model: AchievementsCellModel? {
+        didSet {
+            cupImageView.image = UIImage(systemName: model?.icon ?? "takeoutbag.and.cup.and.straw")
+            achievementLabel.text = model?.title
+            progressLabel.text = model?.progressTitle
+           // progressView.progress = model?.progress ?? 0
+        }
+    }
+    
     private let containerView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10
@@ -25,18 +34,18 @@ class AchievementsCell: UITableViewCell {
     
     private let achievementLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .blue
-        label.font = .systemFont(ofSize: 22)
-        label.numberOfLines = 1
-        label.textAlignment = .center
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 18)
+        label.numberOfLines = 0
+        label.textAlignment = .left
         return label
     }()
     
     private let progressLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .blue
-        label.font = .systemFont(ofSize: 18)
-        label.numberOfLines = 1
+        label.textColor = .darkGray
+        label.font = .systemFont(ofSize: 14)
+        label.numberOfLines = 0
         label.textAlignment = .left
         return label
     }()
@@ -67,15 +76,17 @@ class AchievementsCell: UITableViewCell {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        containerView.backgroundColor = .green
+        
         
         cupImageView.snp.makeConstraints { make in
-            make.top.leading.bottom.equalToSuperview().inset(12.0)
+            make.top.leading.bottom.equalToSuperview().inset(16.0)
             make.centerY.equalTo(containerView.snp.centerY)
             make.height.equalTo(60)
             make.width.equalTo(cupImageView.snp.height)
         }
-        cupImageView.backgroundColor = .red
+        cupImageView.image = UIImage(named: "cubok")
+        
+        
         DispatchQueue.main.async {
             self.cupImageView.layer.cornerRadius = self.cupImageView.frame.height/2
             self.cupImageView.clipsToBounds = true
@@ -83,16 +94,15 @@ class AchievementsCell: UITableViewCell {
         
         achievementLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(12.0)
-            make.centerX.equalTo(containerView.snp.centerX)
+            make.leading.equalTo(cupImageView.snp.trailing).offset(12.0)
         }
-        achievementLabel.backgroundColor = .red
         achievementLabel.text = "самый быстрый конь"
         
         progressLabel.snp.makeConstraints { make in
             make.top.equalTo(achievementLabel.snp.bottom).offset(4.0)
-            make.leading.equalTo(cupImageView.snp.trailing).offset(8.0)
+            make.leading.equalTo(cupImageView.snp.trailing).offset(12.0)
         }
-        progressLabel.backgroundColor = .red
+       
         progressLabel.text = "обогнал гепарда"
         
         progressView.snp.makeConstraints { make in

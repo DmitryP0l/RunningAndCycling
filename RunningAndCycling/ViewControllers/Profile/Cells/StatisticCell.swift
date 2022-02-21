@@ -11,7 +11,8 @@ class StatisticCell: UITableViewCell {
     
     static let identifier = "StatRunCell"
     
-    private var dataSource: [String] = ["", "", "","", "", ""]
+    private var dataSource: [StatisticCellModel] = [ StatisticCellModel(icon: "cup.and.saucer", title: "средняя скорость", result: "120 км/ч"), StatisticCellModel(icon: "cup.and.saucer", title: "средняя скорость", result: "120 км/ч"), StatisticCellModel(icon: "cup.and.saucer", title: "средняя скорость", result: "120 км/ч"), StatisticCellModel(icon: "cup.and.saucer", title: "средняя скорость", result: "120 км/ч"), StatisticCellModel(icon: "cup.and.saucer", title: "средняя скорость", result: "120 км/ч"), StatisticCellModel(icon: "cup.and.saucer", title: "средняя скорость", result: "120 км/ч"), StatisticCellModel(icon: "cup.and.saucer", title: "средняя скорость", result: "120 км/ч"), StatisticCellModel(icon: "cup.and.saucer", title: "средняя скорость", result: "120 км/ч"), StatisticCellModel(icon: "cup.and.saucer", title: "средняя скорость", result: "120 км/ч"), StatisticCellModel(icon: "cup.and.saucer", title: "средняя скорость", result: "120 км/ч") ]
+    
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -29,7 +30,7 @@ class StatisticCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     private func setupCollectionView() {
         contentView.addSubview(collectionView)
         collectionView.delegate = self
@@ -37,15 +38,23 @@ class StatisticCell: UITableViewCell {
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.isPagingEnabled = true
     }
-
+    
 }
 
 //MARK: - UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 extension StatisticCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 120.0, height: 150.0)
+        let width = UIScreen.main.bounds.width / 3
+        let height = 150.0
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -54,8 +63,7 @@ extension StatisticCell: UICollectionViewDelegate, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StatisticCollectionCell.identifier, for: indexPath) as! StatisticCollectionCell
+        cell.model = dataSource[indexPath.row]
         return cell
     }
-    
-    
 }

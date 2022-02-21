@@ -6,25 +6,31 @@
 //
 
 import UIKit
+import SnapKit
 
 class CyclingViewController: UIViewController {
+    
+    private let containerButtonView: ButtonView = {
+        let view = ButtonView()
+        return view 
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "велопрогулка"
-
-        // Do any additional setup after loading the view.
+        setupView()
     }
 
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    private func setupView() {
+        view.addSubview(containerButtonView)
+        containerButtonView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+           // make.top.equalTo(self.view.snp.bottomMargin).offset(-60)
+            make.height.equalTo(80.0)
+        }
+        containerButtonView.backgroundColor = .red
+        
     }
-    */
-
 }

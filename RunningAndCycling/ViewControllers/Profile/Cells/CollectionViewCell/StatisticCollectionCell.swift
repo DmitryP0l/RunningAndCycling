@@ -9,6 +9,14 @@ import UIKit
 
 class StatisticCollectionCell: UICollectionViewCell {
     
+    var model: StatisticCellModel? {
+        didSet {
+            imageView.image = UIImage(systemName: model?.icon ?? "takeoutbag.and.cup.and.straw")
+            descriptionLabel.text = model?.title
+            resultLabel.text = model?.result
+        }
+    }
+    
     static let identifier = "StatisticCollectionCell"
     
     private let containerView: UIView = {
@@ -42,7 +50,6 @@ class StatisticCollectionCell: UICollectionViewCell {
         return label
     }()
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -61,7 +68,7 @@ class StatisticCollectionCell: UICollectionViewCell {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview().inset(4.0)
         }
-        containerView.backgroundColor = .red
+        
         
         imageView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(8)
@@ -71,23 +78,23 @@ class StatisticCollectionCell: UICollectionViewCell {
         }
         imageView.backgroundColor = .yellow
         DispatchQueue.main.async {
-            self.imageView.layer.cornerRadius = self.imageView.frame.width/2
+            self.imageView.layer.cornerRadius = self.imageView.frame.width / 2
             self.clipsToBounds = true
         }
         
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(imageView.snp.bottom).offset(8.0)
-            make.leading.trailing.equalToSuperview().inset(8.0)
+            make.leading.trailing.equalToSuperview().inset(12.0)
             make.centerX.equalToSuperview()
         }
-        descriptionLabel.backgroundColor = .orange
+       
         descriptionLabel.text = "средняя  скорость за все время"
         
         resultLabel.snp.makeConstraints { make in
             make.top.equalTo(descriptionLabel.snp.bottom).offset(8.0)
             make.centerX.equalToSuperview()
         }
-        resultLabel.backgroundColor = .yellow
+       
         resultLabel.text = "8,5 км/ч"
     }
     

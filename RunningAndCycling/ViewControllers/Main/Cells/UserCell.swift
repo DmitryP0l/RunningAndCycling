@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class AchievementCell: UITableViewCell {
+final class UserCell: UITableViewCell {
     
-    static let identifier = "AchievementCell"
+    static let identifier = "UserCell"
     
     private let containerView: UIView = {
         let view = UIView()

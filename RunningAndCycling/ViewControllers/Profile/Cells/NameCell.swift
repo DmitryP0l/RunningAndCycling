@@ -21,9 +21,9 @@ class NameCell: UITableViewCell {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .green
-        label.font = .systemFont(ofSize: 32)
-        label.numberOfLines = 1
+        label.textColor = .black
+        label.font = .systemFont(ofSize: 44)
+        label.numberOfLines = 0
         label.textAlignment = .center
         return label
     }()
@@ -42,12 +42,10 @@ class NameCell: UITableViewCell {
         addSubview(nameLabel)
 
         nameLabel.snp.makeConstraints { make in
+           
             make.top.bottom.equalToSuperview().inset(8.0)
-            make.centerX.equalToSuperview()
+            make.leading.trailing.equalToSuperview().inset(16.0)
+            
         }
-
-        nameLabel.backgroundColor = .blue
-        nameLabel.text = "dfgdg"
-
     }
 }
