@@ -19,6 +19,13 @@
 		B41B3AF327BCD83400C61AC9 /* StatisticCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3AF227BCD83400C61AC9 /* StatisticCollectionCell.swift */; };
 		B41B3AF827BD026300C61AC9 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3AF727BD026300C61AC9 /* ButtonView.swift */; };
 		B41B3AFA27BD233C00C61AC9 /* CellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3AF927BD233C00C61AC9 /* CellModel.swift */; };
+		B41B3AFD27C3AA3F00C61AC9 /* TimerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3AFC27C3AA3F00C61AC9 /* TimerCell.swift */; };
+		B41B3AFF27C3AA6E00C61AC9 /* DistanceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3AFE27C3AA6E00C61AC9 /* DistanceCell.swift */; };
+		B41B3B0127C3AA8D00C61AC9 /* SpeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3B0027C3AA8D00C61AC9 /* SpeedCell.swift */; };
+		B41B3B0427C3ADFF00C61AC9 /* RunningModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3B0327C3ADFE00C61AC9 /* RunningModel.swift */; };
+		B41B3B0727C4C57F00C61AC9 /* CyclingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3B0627C4C57F00C61AC9 /* CyclingModel.swift */; };
+		B41B3B0A27C4C66600C61AC9 /* MapCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3B0927C4C66600C61AC9 /* MapCell.swift */; };
+		B41B3B0C27C4C6AE00C61AC9 /* ParametersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41B3B0B27C4C6AE00C61AC9 /* ParametersCell.swift */; };
 		B464CF4227AFE2D5004AE9DC /* AdviceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B464CF4127AFE2D5004AE9DC /* AdviceCell.swift */; };
 		B464CF4527AFE6B0004AE9DC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = B464CF4427AFE6B0004AE9DC /* Alamofire */; };
 		B464CF5327AFF2A2004AE9DC /* Hourly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B464CF4B27AFF2A1004AE9DC /* Hourly.swift */; };
@@ -62,6 +69,13 @@
 		B41B3AF227BCD83400C61AC9 /* StatisticCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticCollectionCell.swift; sourceTree = "<group>"; };
 		B41B3AF727BD026300C61AC9 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		B41B3AF927BD233C00C61AC9 /* CellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellModel.swift; sourceTree = "<group>"; };
+		B41B3AFC27C3AA3F00C61AC9 /* TimerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCell.swift; sourceTree = "<group>"; };
+		B41B3AFE27C3AA6E00C61AC9 /* DistanceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceCell.swift; sourceTree = "<group>"; };
+		B41B3B0027C3AA8D00C61AC9 /* SpeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedCell.swift; sourceTree = "<group>"; };
+		B41B3B0327C3ADFE00C61AC9 /* RunningModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningModel.swift; sourceTree = "<group>"; };
+		B41B3B0627C4C57F00C61AC9 /* CyclingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclingModel.swift; sourceTree = "<group>"; };
+		B41B3B0927C4C66600C61AC9 /* MapCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCell.swift; sourceTree = "<group>"; };
+		B41B3B0B27C4C6AE00C61AC9 /* ParametersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametersCell.swift; sourceTree = "<group>"; };
 		B464CF4127AFE2D5004AE9DC /* AdviceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceCell.swift; sourceTree = "<group>"; };
 		B464CF4B27AFF2A1004AE9DC /* Hourly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hourly.swift; sourceTree = "<group>"; };
 		B464CF4C27AFF2A2004AE9DC /* Minutely.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Minutely.swift; sourceTree = "<group>"; };
@@ -150,6 +164,41 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		B41B3AFB27C3A9FA00C61AC9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B41B3AFC27C3AA3F00C61AC9 /* TimerCell.swift */,
+				B41B3AFE27C3AA6E00C61AC9 /* DistanceCell.swift */,
+				B41B3B0027C3AA8D00C61AC9 /* SpeedCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B41B3B0227C3ADCB00C61AC9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B41B3B0327C3ADFE00C61AC9 /* RunningModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B41B3B0527C4C56100C61AC9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B41B3B0627C4C57F00C61AC9 /* CyclingModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B41B3B0827C4C64400C61AC9 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B41B3B0927C4C66600C61AC9 /* MapCell.swift */,
+				B41B3B0B27C4C6AE00C61AC9 /* ParametersCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		B464CF4927AFEFDB004AE9DC /* API Manager */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,8 +269,8 @@
 			isa = PBXGroup;
 			children = (
 				B49B85BC27AC40AD00C8D864 /* Main */,
-				B49B85BE27AC40DC00C8D864 /* Cycling */,
 				B49B85BD27AC40C200C8D864 /* Running */,
+				B49B85BE27AC40DC00C8D864 /* Cycling */,
 				B49B85BF27AC40F000C8D864 /* Profile */,
 			);
 			path = ViewControllers;
@@ -250,6 +299,8 @@
 		B49B85BD27AC40C200C8D864 /* Running */ = {
 			isa = PBXGroup;
 			children = (
+				B41B3B0227C3ADCB00C61AC9 /* Model */,
+				B41B3AFB27C3A9FA00C61AC9 /* Cells */,
 				B49B85AE27AB14BD00C8D864 /* RunningViewController.swift */,
 			);
 			path = Running;
@@ -258,6 +309,8 @@
 		B49B85BE27AC40DC00C8D864 /* Cycling */ = {
 			isa = PBXGroup;
 			children = (
+				B41B3B0527C4C56100C61AC9 /* Model */,
+				B41B3B0827C4C64400C61AC9 /* Cells */,
 				B49B85B227AB14E700C8D864 /* CyclingViewController.swift */,
 			);
 			path = Cycling;
@@ -447,6 +500,7 @@
 				B49B85BB27AC3C5100C8D864 /* ProfileViewController.swift in Sources */,
 				B41B3AE227BA825700C61AC9 /* UserModel.swift in Sources */,
 				B464CF5327AFF2A2004AE9DC /* Hourly.swift in Sources */,
+				B41B3B0127C3AA8D00C61AC9 /* SpeedCell.swift in Sources */,
 				B49B85B427AB14E700C8D864 /* CyclingViewController.swift in Sources */,
 				B464CF5927AFF2A2004AE9DC /* Current.swift in Sources */,
 				B49B85C527AC48A500C8D864 /* WeatherModel.swift in Sources */,
@@ -454,14 +508,20 @@
 				B41B3AEB27BBD44F00C61AC9 /* AchievementsCell.swift in Sources */,
 				B41B3AE027BA742400C61AC9 /* NavigationBarController.swift in Sources */,
 				B49B859627AB023900C8D864 /* AppDelegate.swift in Sources */,
+				B41B3B0427C3ADFF00C61AC9 /* RunningModel.swift in Sources */,
 				B41B3AE927BBCEC900C61AC9 /* NameCell.swift in Sources */,
 				B464CF5527AFF2A2004AE9DC /* Temp.swift in Sources */,
 				B41B3AE427BA833F00C61AC9 /* AdviceModel.swift in Sources */,
 				B464CF5627AFF2A2004AE9DC /* WeatherResponse.swift in Sources */,
 				B49B85C927AEFCAB00C8D864 /* HourlyWeatherCollectionViewCell.swift in Sources */,
+				B41B3AFD27C3AA3F00C61AC9 /* TimerCell.swift in Sources */,
 				B49B85B027AB14BD00C8D864 /* RunningViewController.swift in Sources */,
 				B41B3AFA27BD233C00C61AC9 /* CellModel.swift in Sources */,
+				B41B3AFF27C3AA6E00C61AC9 /* DistanceCell.swift in Sources */,
+				B41B3B0727C4C57F00C61AC9 /* CyclingModel.swift in Sources */,
 				B49B859827AB023900C8D864 /* SceneDelegate.swift in Sources */,
+				B41B3B0C27C4C6AE00C61AC9 /* ParametersCell.swift in Sources */,
+				B41B3B0A27C4C66600C61AC9 /* MapCell.swift in Sources */,
 				B41B3AF327BCD83400C61AC9 /* StatisticCollectionCell.swift in Sources */,
 				B464CF4227AFE2D5004AE9DC /* AdviceCell.swift in Sources */,
 				B464CF5A27AFF2A2004AE9DC /* Daily.swift in Sources */,

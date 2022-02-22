@@ -8,12 +8,18 @@
 import Foundation
 import UIKit
 
+enum ProfileCellType {
+       case photo
+       case name
+       case statistics
+       case achievements
+   }
+
 struct StatisticCellModel {
     let icon: String?
     let title: String?
     let result: String?
 }
-
 
 struct AchievementsCellModel {
     let icon: String?
@@ -21,14 +27,6 @@ struct AchievementsCellModel {
     let progressTitle: String?
     let progress: Int?
 }
-
-
-enum ProfileCellType {
-       case photo
-       case name
-       case statistics
-       case achievements
-   }
 
 
 struct ProfileCellItem {

@@ -16,7 +16,6 @@ final class ButtonView: UIView {
         return view
     }()
     
-
     private let playButton: UIButton = {
         let button = UIButton()
         let image = UIImage(systemName: "play.circle")
@@ -41,8 +40,6 @@ final class ButtonView: UIView {
         return button
     }()
     
-    
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -60,7 +57,6 @@ final class ButtonView: UIView {
     
     @objc func locationButtonAction() {
     }
-    
     
     private func setupView() {
         addSubview(containerView)
