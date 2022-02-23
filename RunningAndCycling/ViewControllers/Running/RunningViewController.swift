@@ -76,5 +76,5 @@ extension RunningViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    
+
 }

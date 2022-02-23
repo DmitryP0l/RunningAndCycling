@@ -51,6 +51,12 @@ class CyclingViewController: UIViewController {
 
 
 extension CyclingViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return CGFloat(height)
+//        let height = view.frame.size.height / 2
+        return UITableView.automaticDimension
+    } 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
