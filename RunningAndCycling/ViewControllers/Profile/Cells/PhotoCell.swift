@@ -36,7 +36,7 @@ class PhotoCell: UITableViewCell {
 
     
     private func setupView() {
-        addSubview(photoImageView)
+        contentView.addSubview(photoImageView)
         photoImageView.snp.makeConstraints { make in
             make.top.bottom.equalToSuperview().inset(16.0)
             make.width.equalToSuperview().multipliedBy(0.3)

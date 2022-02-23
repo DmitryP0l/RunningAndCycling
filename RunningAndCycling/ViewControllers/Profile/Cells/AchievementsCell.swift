@@ -67,7 +67,7 @@ class AchievementsCell: UITableViewCell {
     }
     
     private func setupView() {
-        addSubview(containerView)
+        contentView.addSubview(containerView)
         containerView.addSubview(cupImageView)
         containerView.addSubview(achievementLabel)
         containerView.addSubview(progressLabel)

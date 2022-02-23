@@ -50,6 +50,13 @@ class RunningViewController: UIViewController {
 
 //MARK: - UITableViewDelegate, UITableViewDataSource
 extension RunningViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        let height = view.frame.size.height / 2
+//        return CGFloat(height)
+        return UITableView.automaticDimension
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }

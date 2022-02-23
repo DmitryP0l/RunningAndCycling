@@ -29,7 +29,7 @@ class AdviceCell: UITableViewCell {
     }
     
     private func setupView() {
-       addSubview(containerView)
+        contentView.addSubview(containerView)
         
         containerView.snp.makeConstraints { make in
             make.top.equalToSuperview()

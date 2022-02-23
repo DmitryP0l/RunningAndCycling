@@ -98,7 +98,7 @@ final class CurrentWeatherCell: UITableViewCell {
     
     //MARK: - Setup UIView
     private func setupView() {
-        addSubview(containerView)
+        contentView.addSubview(containerView)
         
         containerView.addSubview(backgroundImageView)
         containerView.addSubview(weatherDescriptionLabel)

@@ -36,7 +36,7 @@ final class UserCell: UITableViewCell {
     }
     
     private func setupView() {
-        addSubview(containerView)
+        contentView.addSubview(containerView)
         containerView.addSubview(achievlabel)
         
         containerView.snp.makeConstraints { make in

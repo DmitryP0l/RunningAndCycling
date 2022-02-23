@@ -39,7 +39,7 @@ class NameCell: UITableViewCell {
     }
 
     private func setupView() {
-        addSubview(nameLabel)
+        contentView.addSubview(nameLabel)
 
         nameLabel.snp.makeConstraints { make in
            
