@@ -11,7 +11,7 @@
 import UIKit
 
 @IBDesignable
-class LineChartView: UIView {
+final class LineChartView: UIView {
     
     var graphPoints = [ 4.2 , 2.2 , 6.2 , 4.2 , 5.2 , 8.2 , 3.2 ]
     

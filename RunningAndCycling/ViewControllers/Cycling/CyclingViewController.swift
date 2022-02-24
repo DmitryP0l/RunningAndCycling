@@ -32,7 +32,7 @@ class CyclingViewController: UIViewController {
         containerButtonView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide)
-            make.height.equalTo(80.0)
+            make.height.equalTo(70.0)
         }
     }
     
@@ -53,9 +53,11 @@ class CyclingViewController: UIViewController {
 extension CyclingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return CGFloat(height)
-//        let height = view.frame.size.height / 2
-        return UITableView.automaticDimension
+        
+        let height = view.frame.size.height / 2
+        return CGFloat(height)
+        
+//        return UITableView.automaticDimension
     } 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count

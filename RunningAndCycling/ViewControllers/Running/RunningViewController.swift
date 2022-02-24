@@ -30,7 +30,7 @@ class RunningViewController: UIViewController {
         containerButtonView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide)
-            make.height.equalTo(80.0)
+            make.height.equalTo(70.0)
         }
     }
     
