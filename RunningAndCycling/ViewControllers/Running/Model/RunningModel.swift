@@ -19,7 +19,22 @@ struct RunningCellItem {
     let dataModel: Any?
 }
 
+struct TimerCellModel {
+    let currentTimer: String?
+    let setTimer: String?
+    let leftAllTimer: String?
+    let setInterval: String?
+    let leftInterval: String?
+}
+
+struct DistancionCellModel {
+    let currentDistancion: String?
+    let setDistance: String?
+    let leftDistance: String?
+}
+
 struct SpeedCellModel {
     let currentSpeed: String?
     let averageSpeed: String?
 }
+

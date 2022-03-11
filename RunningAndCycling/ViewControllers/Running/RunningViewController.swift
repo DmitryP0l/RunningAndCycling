@@ -16,6 +16,13 @@ class RunningViewController: UIViewController {
         return view
     }()
     
+    private var timerList: [TimerCellModel] = [
+        TimerCellModel(currentTimer: "0.45.56", setTimer: "set timer 01.20", leftAllTimer: "left 00.34.04", setInterval: "set interval 00.15", leftInterval: "left 00.14.04")
+    ]
+    
+    private var distancionList: [DistancionCellModel] = [
+        DistancionCellModel(currentDistancion: "2.220 m", setDistance: "set distance 2.300 m", leftDistance: "left distance 0.080 m")]
+    
     private var speedList: [SpeedCellModel] = [
         SpeedCellModel(currentSpeed: "7.23km/h", averageSpeed: "average speed 5.23km/h")
     ]
@@ -53,8 +60,13 @@ class RunningViewController: UIViewController {
     }
     
     private func createItems() {
-        dataSource.append(RunningCellItem(type: .timer, dataModel: "00.11.22"))
-        dataSource.append(RunningCellItem(type: .distabce, dataModel: "1.111m"))
+        for timer in timerList {
+            dataSource.append(RunningCellItem(type: .timer, dataModel: timer))
+        }
+        
+        for distance in distancionList {
+            dataSource.append(RunningCellItem(type: .distabce, dataModel: distance))
+        }
         for speed in speedList {
             dataSource.append(RunningCellItem(type: .speed, dataModel: speed))
         }
@@ -82,14 +94,14 @@ extension RunningViewController: UITableViewDelegate, UITableViewDataSource {
             
         case .timer:
             let cell = tableView.dequeueReusableCell(withIdentifier: TimerCell.identifier, for: indexPath) as! TimerCell
-            if let model = item.dataModel as? String {
+            if let model = item.dataModel as? TimerCellModel {
                 cell.model = model
             }
             return cell
             
         case .distabce:
             let cell = tableView.dequeueReusableCell(withIdentifier: DistanceCell.identifier, for: indexPath) as! DistanceCell
-            if let model = item.dataModel as? String {
+            if let model = item.dataModel as? DistancionCellModel {
                 cell.model = model
             }
             return cell

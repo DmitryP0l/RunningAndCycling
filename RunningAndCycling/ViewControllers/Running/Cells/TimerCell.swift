@@ -11,11 +11,13 @@ class TimerCell: UITableViewCell {
 
     static let identifier = "TimerCell"
     
-    var model: String? {
+    var model: TimerCellModel? {
         didSet {
-            if let model = model {
-                basicTimerLabel.text = model
-            }
+            basicTimerLabel.text = model?.currentTimer
+            setAllRunTimeLabel.text = model?.setTimer
+            allTimeLeftLabel.text = model?.leftAllTimer
+            setIntervalRunTimeLabel.text = model?.setInterval
+            intervalLeftLabel.text = model?.leftInterval
         }
     }
     
