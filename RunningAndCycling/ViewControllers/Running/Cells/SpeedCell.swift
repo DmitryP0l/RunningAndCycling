@@ -76,7 +76,6 @@ class SpeedCell: UITableViewCell {
             make.top.equalTo(currentSpeedLabel.snp.bottom).offset(12.0)
             make.centerX.equalToSuperview()
         }
-        averageRunPace.text = "средний темп 5.2 km/h"
         
         runPaceChart.snp.makeConstraints { make in
             make.top.equalTo(averageRunPace.snp.bottom).offset(8.0)

@@ -17,13 +17,18 @@ class CyclingViewController: UIViewController {
         return view
     }()
     
-    private var dataSource: [CyclingCellType] = [.map, .parameters]
+    private var parametersCyclingList: [ParametersCellModel] = [
+        ParametersCellModel(currentSpeed: "10.10 km/h", averageSpeed: "5.5 km/h", distance: "22.2 km", basicTimer: "1.11.11 h")
+    ]
+    
+    private var dataSource: [cyclingCellItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "велопрогулка"
         setupView()
         setupTableView()
+        createItems()
     }
 
     
@@ -47,6 +52,13 @@ class CyclingViewController: UIViewController {
         tableView.register(MapCell.self, forCellReuseIdentifier: MapCell.identifier)
         tableView.register(ParametersCell.self, forCellReuseIdentifier: ParametersCell.identifier)
     }
+    
+    private func createItems() {
+        dataSource.append(cyclingCellItem(type: .map, dataModel: nil))
+        for parameters in parametersCyclingList {
+            dataSource.append(cyclingCellItem(type: .parameters, dataModel: parameters))
+        }
+    }
 }
 
 
@@ -64,13 +76,18 @@ extension CyclingViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch dataSource[indexPath.row] {
-            
+        
+        let item = dataSource[indexPath.row]
+        switch item.type {
         case .map:
             let cell = tableView.dequeueReusableCell(withIdentifier: MapCell.identifier, for: indexPath) as! MapCell
             return cell
+            
         case .parameters:
             let cell = tableView.dequeueReusableCell(withIdentifier: ParametersCell.identifier, for: indexPath) as! ParametersCell
+            if let model = item.dataModel as? ParametersCellModel {
+                cell.model = model
+            }
             return cell
         }
     }

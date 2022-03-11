@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum RunningCellType {
        case timer
        case distabce

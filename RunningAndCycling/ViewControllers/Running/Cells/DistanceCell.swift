@@ -83,13 +83,11 @@ class DistanceCell: UITableViewCell {
         currentDistanceLAbel.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().inset(12.0)
         }
-        currentDistanceLAbel.text = "1.720 m"
         
         setDistanceLabel.snp.makeConstraints { make in
             make.top.equalTo(currentDistanceLAbel.snp.bottom).inset(4.0)
             make.centerX.equalToSuperview()
         }
-        setDistanceLabel.text = "заданная дистанция: 2.500 m"
         
         setDistanceButton.snp.makeConstraints { make in
             make.trailing.equalToSuperview().inset(12.0)
@@ -102,10 +100,9 @@ class DistanceCell: UITableViewCell {
             make.leading.trailing.equalToSuperview().inset(12.0)
             make.bottom.equalToSuperview().inset(8.0)
         }
-        distanceLeftLabel.text = "осталось: 0.780 m / дистанция пройдена"
     }
     
     @objc func setDistanceAction() {
-        print("set")
+        print("setDistance")
     }
 }

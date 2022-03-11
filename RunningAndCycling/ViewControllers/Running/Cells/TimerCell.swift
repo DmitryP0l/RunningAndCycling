@@ -115,13 +115,11 @@ class TimerCell: UITableViewCell {
         basicTimerLabel.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().inset(12.0)
         }
-        basicTimerLabel.text = "00:23:45"
         
         setAllRunTimeLabel.snp.makeConstraints { make in
             make.top.equalTo(basicTimerLabel.snp.bottom).offset(4.0)
             make.centerX.equalToSuperview()
         }
-        setAllRunTimeLabel.text = "заданное время: 00:40"
         
         setAllRunTimeButton.snp.makeConstraints { make in
             make.centerY.equalTo(setAllRunTimeLabel.snp.centerY)
@@ -134,13 +132,11 @@ class TimerCell: UITableViewCell {
             make.top.equalTo(setAllRunTimeLabel.snp.bottom).offset(4.0)
             make.leading.trailing.equalToSuperview().inset(12.0)
         }
-        allTimeLeftLabel.text = "осталось 00:16:15 / потрачено"
         
         setIntervalRunTimeLabel.snp.makeConstraints { make in
             make.top.equalTo(allTimeLeftLabel.snp.bottom).offset(4.0)
             make.centerX.equalToSuperview()
         }
-        setIntervalRunTimeLabel.text = "заданный интервал: 00:10"
         
         setIntervalRunTimeButton.snp.makeConstraints { make in
             make.centerY.equalTo(setIntervalRunTimeLabel.snp.centerY)
@@ -154,7 +150,6 @@ class TimerCell: UITableViewCell {
             make.leading.trailing.equalToSuperview().inset(12)
             make.bottom.equalToSuperview().inset(8.0)
         }
-        intervalLeftLabel.text = "интервал через 00:03:45"
         
     }
     

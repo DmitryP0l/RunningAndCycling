@@ -11,6 +11,15 @@ class ParametersCell: UITableViewCell {
 
    static let identifier = "ParametersCell"
     
+    var model: ParametersCellModel? {
+        didSet {
+            currentSpeedLabel.text = model?.currentSpeed
+            averageSpeed.text = model?.averageSpeed
+            distanceLabel.text = model?.distance
+            basicTimer.text = model?.basicTimer
+        }
+    }
+    
     private let containerView: UIView = {
         let view = UIView()
         return view
