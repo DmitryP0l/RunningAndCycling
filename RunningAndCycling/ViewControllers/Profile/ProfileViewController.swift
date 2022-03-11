@@ -11,8 +11,6 @@ import SnapKit
 
 class ProfileViewController: UIViewController {
     
-
-    
     private var achievList: [AchievementsCellModel] = [
         AchievementsCellModel(icon: "cup.and.saucer.fill", title: "самый быстрый", progressTitle: "скоро дотянем", progress: 10),
         AchievementsCellModel(icon: "cup.and.saucer.fill", title: "самый быстрый", progressTitle: "скоро дотянем", progress: 10),

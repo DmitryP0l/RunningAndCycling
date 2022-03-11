@@ -51,26 +51,28 @@ final class MapView: UIView{
         manager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         manager.delegate = self
         manager.requestWhenInUseAuthorization()
+        manager.requestAlwaysAuthorization()
         manager.startUpdatingLocation()
     }
-    
-    
 }
 
-
+//MARK: - CLLocationManagerDelegate
 extension MapView: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(locations)
+      //  render(locations)
+        
         if let location = locations.first {
-            manager.stopUpdatingLocation()
+            //manager.stopUpdatingLocation()
             render(location)
         }
     }
     
-    func render(_ location: CLLocation) {
+    private func render(_ location: CLLocation) {
         let coordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
                                                 longitude: location.coordinate.longitude)
-        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: coordinate, span: span)
         mapView.setRegion(region,
                           animated: true)

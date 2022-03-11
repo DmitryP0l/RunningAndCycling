@@ -13,3 +13,13 @@ enum RunningCellType {
        case distabce
        case speed
    }
+
+struct RunningCellItem {
+    let type: RunningCellType
+    let dataModel: Any?
+}
+
+struct SpeedCellModel {
+    let currentSpeed: String?
+    let averageSpeed: String?
+}

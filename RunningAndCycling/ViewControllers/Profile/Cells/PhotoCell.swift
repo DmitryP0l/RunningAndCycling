@@ -48,8 +48,6 @@ class PhotoCell: UITableViewCell {
             self.photoImageView.layer.cornerRadius = self.photoImageView.frame.height/2
             self.photoImageView.clipsToBounds = true
         }
-        
-        photoImageView.backgroundColor = .red
     }
     
     

@@ -11,6 +11,14 @@ class DistanceCell: UITableViewCell {
 
     static let identifier = "DistanceCell"
     
+    var model: String? {
+        didSet {
+            if let model = model {
+                currentDistanceLAbel.text = model
+            }
+        }
+    }
+    
     private let containerView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10.0

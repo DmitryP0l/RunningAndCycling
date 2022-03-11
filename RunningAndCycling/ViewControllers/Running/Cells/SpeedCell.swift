@@ -11,6 +11,13 @@ class SpeedCell: UITableViewCell {
 
     static let identifier = "SpeedCell"
     
+    var model: SpeedCellModel? {
+        didSet {
+            currentSpeedLabel.text = model?.currentSpeed
+            averageRunPace.text = model?.averageSpeed
+        }
+    }
+    
     private let containerView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10.0
@@ -64,7 +71,6 @@ class SpeedCell: UITableViewCell {
         currentSpeedLabel.snp.makeConstraints { make in
             make.top.leading.trailing.equalToSuperview().inset(12.0)
         }
-        currentSpeedLabel.text = "6.27 km/h"
         
         averageRunPace.snp.makeConstraints { make in
             make.top.equalTo(currentSpeedLabel.snp.bottom).offset(12.0)

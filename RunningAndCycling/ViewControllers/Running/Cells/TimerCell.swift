@@ -11,6 +11,14 @@ class TimerCell: UITableViewCell {
 
     static let identifier = "TimerCell"
     
+    var model: String? {
+        didSet {
+            if let model = model {
+                basicTimerLabel.text = model
+            }
+        }
+    }
+    
     private let containerView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 10.0

@@ -16,13 +16,18 @@ class RunningViewController: UIViewController {
         return view
     }()
     
-    private var dataSource: [RunningCellType] = [.timer, .distabce, .speed]
+    private var speedList: [SpeedCellModel] = [
+        SpeedCellModel(currentSpeed: "7.23km/h", averageSpeed: "average speed 5.23km/h")
+    ]
+    
+    private var dataSource: [RunningCellItem] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "пробежка"
         setupView()
         setupTableView()
+        createItems()
     }
 
     private func setupView() {
@@ -46,6 +51,15 @@ class RunningViewController: UIViewController {
         tableView.register(DistanceCell.self, forCellReuseIdentifier: DistanceCell.identifier)
         tableView.register(SpeedCell.self, forCellReuseIdentifier: SpeedCell.identifier)
     }
+    
+    private func createItems() {
+        dataSource.append(RunningCellItem(type: .timer, dataModel: "00.11.22"))
+        dataSource.append(RunningCellItem(type: .distabce, dataModel: "1.111m"))
+        for speed in speedList {
+            dataSource.append(RunningCellItem(type: .speed, dataModel: speed))
+        }
+        
+    }
 }
 
 //MARK: - UITableViewDelegate, UITableViewDataSource
@@ -62,16 +76,29 @@ extension RunningViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch dataSource[indexPath.row] {
+        
+        let item = dataSource[indexPath.row]
+        switch item.type {
             
         case .timer:
             let cell = tableView.dequeueReusableCell(withIdentifier: TimerCell.identifier, for: indexPath) as! TimerCell
+            if let model = item.dataModel as? String {
+                cell.model = model
+            }
             return cell
+            
         case .distabce:
             let cell = tableView.dequeueReusableCell(withIdentifier: DistanceCell.identifier, for: indexPath) as! DistanceCell
+            if let model = item.dataModel as? String {
+                cell.model = model
+            }
             return cell
+            
         case .speed:
             let cell = tableView.dequeueReusableCell(withIdentifier: SpeedCell.identifier, for: indexPath) as! SpeedCell
+            if let model = item.dataModel as? SpeedCellModel {
+                cell.model = model
+            }
             return cell
         }
     }
