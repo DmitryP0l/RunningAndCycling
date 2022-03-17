@@ -5,9 +5,59 @@
 //  Created by lion on 16.02.22.
 //
 
+protocol ButtonViewDelegate: AnyObject {
+    func playButton()
+    func stopButton()
+    func locationButton()
+}
+
 import UIKit
 
+enum StateStopButton {
+    case stop
+    case save
+}
+
+enum StatePlayButton {
+    case play
+    case pause
+    var imageName: String {
+        switch self {
+        case .play:
+            return "play.circle"
+        case .pause:
+            return "pause.circle"
+        }
+    }
+}
+
+enum StateLocationButton {
+    case selected
+    case noSelected
+    var imageName: String {
+        switch self {
+        case .selected:
+            return "location.north.circle"
+        case .noSelected:
+            return "location.circle"
+        }
+    }
+}
+
 final class ButtonView: UIView {
+    
+    weak var delegate: ButtonViewDelegate?
+    private var stateStopButton: StateStopButton = .stop
+    private var statePlayButton: StatePlayButton = .play {
+        didSet {
+            playButton.setBackgroundImage(UIImage(systemName: statePlayButton.imageName), for: .normal)
+        }
+    }
+    private var stateLocationButton: StateLocationButton = .noSelected {
+        didSet {
+            locationButton.setBackgroundImage(UIImage(systemName: stateLocationButton.imageName), for: .normal)
+        }
+    }
     
     private let containerView: UIView = {
         let view = UIView()
@@ -19,15 +69,15 @@ final class ButtonView: UIView {
     private let playButton: UIButton = {
         let button = UIButton()
         let image = UIImage(systemName: "play.circle")
-        button.setImage(image, for: .normal)
-        button.addTarget(self, action: #selector(playButtonAction), for: .touchUpInside)
+        button.setBackgroundImage(image, for: .normal)
+        button.addTarget(self, action: #selector(playPauseButtonAction), for: .touchUpInside)
         return button
     }()
     
     private let stopButton: UIButton = {
         let button = UIButton()
         let image = UIImage(systemName: "stop.circle")
-        button.setImage(image, for: .normal)
+        button.setBackgroundImage(image, for: .normal)
         button.addTarget(self, action: #selector(stopButtonAction), for: .touchUpInside)
         return button
     }()
@@ -35,7 +85,9 @@ final class ButtonView: UIView {
     private let locationButton: UIButton = {
         let button = UIButton()
         let image = UIImage(systemName: "location.circle")
-        button.setImage(image, for: .normal)
+//        let imageSel = UIImage(systemName: "location.north.circle")
+        button.setBackgroundImage(image, for: .normal)
+//        button.setBackgroundImage(imageSel, for: .selected)
         button.addTarget(self, action: #selector(locationButtonAction), for: .touchUpInside)
         return button
     }()
@@ -49,13 +101,16 @@ final class ButtonView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    @objc func playButtonAction() {
+    @objc func playPauseButtonAction() {
+        statePlayButton = statePlayButton == .play ? .pause : .play
+        delegate?.playButton()
     }
-    
     @objc func stopButtonAction() {
+        statePlayButton = .play
     }
     
     @objc func locationButtonAction() {
+        stateLocationButton = stateLocationButton == .noSelected ? .selected : .noSelected
     }
     
     private func setupView() {
@@ -67,7 +122,7 @@ final class ButtonView: UIView {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        containerView.backgroundColor = .green
+        containerView.backgroundColor = .clear
         
         playButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -75,7 +130,6 @@ final class ButtonView: UIView {
             make.height.equalTo(containerView.snp.height).multipliedBy(0.9)
             make.width.equalTo(playButton.snp.height)
         }
-        playButton.backgroundColor = .red
         
         stopButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -83,7 +137,6 @@ final class ButtonView: UIView {
             make.height.equalTo(containerView.snp.height).multipliedBy(0.7)
             make.width.equalTo(stopButton.snp.height)
         }
-        stopButton.backgroundColor = .white
         
         locationButton.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -91,7 +144,6 @@ final class ButtonView: UIView {
             make.height.equalTo(containerView.snp.height).multipliedBy(0.7)
             make.width.equalTo(locationButton.snp.height)
         }
-        locationButton.backgroundColor = .white
     }
 
 }

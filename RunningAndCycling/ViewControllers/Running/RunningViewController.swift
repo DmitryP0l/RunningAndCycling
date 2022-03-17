@@ -16,15 +16,73 @@ class RunningViewController: UIViewController {
         return view
     }()
     
+    
+    // это кстати нашел работающий таймер))
+   // private var currentTimer = "00.00.00"
+    
+    private var timer = Timer()
+    private var count: Int = 0
+    private var timerCounting: Bool = false
+    
+    func playPause() {
+        if timerCounting {
+            timerCounting = false
+            timer.invalidate()
+//            let image = UIImage(systemName: "play.circle")
+//            button.setImage(image, for: .normal)
+        } else {
+            timerCounting = true
+//            let image = UIImage(systemName: "pause.circle")
+//            button.setImage(image, for: .normal)
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
+        }
+    }
+    
+    @objc func timerCounter() {
+        count += 1
+        let time = secondsToHoursMinSec(seconds: count)
+        let timerString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
+       // currentTimer = timerString
+    }
+    
+    func secondsToHoursMinSec(seconds: Int) -> (Int, Int, Int) {
+        return((seconds / 3600), ((seconds % 3600) / 60), ((seconds % 3600) % 60))
+    }
+    
+    func makeTimeString(hours: Int, minutes: Int, seconds: Int) -> String {
+        var timeString = ""
+        timeString += String(format: "%02d", hours)
+        timeString += " : "
+        timeString += String(format: "%02d", minutes)
+        timeString += " : "
+        timeString += String(format: "%02d", seconds)
+        
+        return timeString
+    }
+    
+    func stopReset() {
+        let alert = UIAlertController(title: "reset?", message: "точно reset?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: { (_) in
+        }))
+        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: { (_) in
+            self.count = 0
+            self.timer.invalidate()
+        }))
+        
+    }
+    
+    
+    
+    
     private var timerList: [TimerCellModel] = [
-        TimerCellModel(currentTimer: "0.45.56", setTimer: "set timer 01.20", leftAllTimer: "left 00.34.04", setInterval: "set interval 00.15", leftInterval: "left 00.14.04")
+        TimerCellModel(currentTimer: "currentTimer", setTimer: "set timer 01.20", leftAllTimer: "left 00.34.04", setInterval: "set interval 00.15", leftInterval: "left 00.14.04")
     ]
     
     private var distancionList: [DistancionCellModel] = [
         DistancionCellModel(currentDistancion: "2.220 m", setDistance: "set distance 2.300 m", leftDistance: "left distance 0.080 m")]
     
     private var speedList: [SpeedCellModel] = [
-        SpeedCellModel(currentSpeed: "7.23km/h", averageSpeed: "average speed 5.23km/h")
+        SpeedCellModel(currentSpeed: "7.23km/h", averageSpeed: "average speed 4.93 km/h")
     ]
     
     private var dataSource: [RunningCellItem] = []
@@ -44,6 +102,7 @@ class RunningViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(70.0)
         }
+        containerButtonView.delegate = self
     }
     
     private func setupTableView() {
@@ -116,4 +175,21 @@ extension RunningViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
 
+}
+
+
+extension RunningViewController: ButtonViewDelegate {
+    func playButton() {
+        print("Play")
+    }
+    
+    func stopButton() {
+        
+    }
+    
+    func locationButton() {
+        
+    }
+    
+    
 }

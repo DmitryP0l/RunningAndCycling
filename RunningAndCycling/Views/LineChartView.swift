@@ -5,30 +5,26 @@
 //  Created by lion on 23.02.22.
 
 
-
-
-
 import UIKit
 
 @IBDesignable
 final class LineChartView: UIView {
     
-    var graphPoints = [ 4.2 , 2.2 , 6.2 , 4.2 , 5.2 , 8.2 , 3.2 ]
+    var graphPoints = [ 4.2, 4.2, 6.2, 4.2, 5.2, 6.2, 5.2, 4.5, 5.6, 7.3, 4.2, 4.2, 6.2, 4.2, 5.2, 6.2, 5.2, 4.5, 5.6, 7.3, 4.2, 4.2, 6.2, 4.2, 5.2, 6.2, 5.2, 4.5, 5.6, 7.3, 4.2, 4.2, 6.2, 4.2, 5.2, 6.2, 5.2, 4.5, 5.6, 7.3 ]
     
     
     private enum Constants {
         static let cornerRadiusSize = CGSize(width: 8.0, height: 8.0)
         static let margin: CGFloat = 10.0
-        static let topBorder: CGFloat = 20.0
+        static let topBorder: CGFloat = 50.0
         static let bottomBorder: CGFloat = 0.0
         static let colorAlpha: CGFloat = 0.3
         static let circleDiameter: CGFloat = 5.0
     }
     
-    
     // 1
-    @IBInspectable var startColor: UIColor = .darkGray
-    @IBInspectable var endColor: UIColor = .lightGray
+    @IBInspectable var startColor: UIColor = .white
+    @IBInspectable var endColor: UIColor = .black
     
     override func draw(_ rect: CGRect) {
         let path = UIBezierPath(
