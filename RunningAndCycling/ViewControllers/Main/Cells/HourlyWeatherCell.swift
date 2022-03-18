@@ -18,7 +18,6 @@ final class HourlyWeatherCell: UITableViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-       // view.translatesAutoresizingMaskIntoConstraints = false
         view.register(HourlyWeatherCollectionViewCell.self, forCellWithReuseIdentifier: HourlyWeatherCollectionViewCell.identifier)
         return view
     }()

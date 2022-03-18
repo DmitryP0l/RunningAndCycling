@@ -5,33 +5,30 @@
 //  Created by lion on 2.02.22.
 //
 
+
 import UIKit
 import SnapKit
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     
-    private var dataSource:[CellType] = []
-    private enum CellType {
-        case achievUser(user: UserModel)
-        case currentWeather(day: WeatherModel)
-        case hourly(hours: [WeatherModel])
-        case advice(advice: AdviceModel)
-        //case lastActivity //добавить скорее всего табличку в ячейку с последними треками
-    }
+    private let tableView = UITableView()
     
-    let tableView = UITableView()
+    private var dataSource: [MainCellType] = []
+
+    private var latestList: [LatestCellModel] = [
+        LatestCellModel(date: "12.10.22", time: "время тренировки: 1:53:40", speed: "средняя скорость: 5.23 km/h", distance: "пройденная дистанция: 7.34 km"),
+        LatestCellModel(date: "12.10.22", time: "02:34:57", speed: "5.36 km/h", distance: "12 km"),
+        LatestCellModel(date: "12.10.22", time: "02:34:57", speed: "5.36 km/h", distance: "12 km"),
+        LatestCellModel(date: "12.10.22", time: "02:34:57", speed: "5.36 km/h", distance: "12 km"),
+        LatestCellModel(date: "12.10.22", time: "02:34:57", speed: "5.36 km/h", distance: "12 km")
+    ]
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "главная страница"
         setupTableView()
-        
-        APIManager.getWeather { [weak self] response in
-            guard let self = self, let response = response else { return }
-            self.dataSource.append(.currentWeather(day: response.current))
-            self.dataSource.append(.hourly(hours: response.hourly))
-            self.tableView.reloadData()
-        }
+        setupCell()
     }
 
     private func setupTableView() {
@@ -42,11 +39,28 @@ class MainViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         tableView.isUserInteractionEnabled = true
-        tableView.register(UserCell.self, forCellReuseIdentifier: UserCell.identifier)
         tableView.register(CurrentWeatherCell.self, forCellReuseIdentifier: CurrentWeatherCell.identifier)
         tableView.register(HourlyWeatherCell.self, forCellReuseIdentifier: HourlyWeatherCell.identifier)
-        tableView.register(AdviceCell.self, forCellReuseIdentifier: AdviceCell.identifier)
+        tableView.register(LatestCell.self, forCellReuseIdentifier: LatestCell.identifier)
     }
+    
+    private func setupCell() {
+        APIManager.getWeather { [weak self] response in
+            guard let self = self, let response = response else { return }
+            self.dataSource.append(.currentWeather(day: response.current))
+            self.dataSource.append(.hourly(hours: response.hourly))
+            self.createLatest() //стремное решение, но работает
+            self.tableView.reloadData()
+        }
+    }
+    
+    private func createLatest() {
+        for latest in latestList {
+            dataSource.append(MainCellType.latest(latest: latest))
+        }
+    }
+    
+    
 }
 
 //MARK: - UITableViewDelegate, UITableViewDataSource
@@ -68,10 +82,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch dataSource[indexPath.row] {
 
-        case .achievUser(user: let user):
-            let cell = tableView.dequeueReusableCell(withIdentifier: UserCell.identifier, for: indexPath) as! UserCell
-            cell.textLabel?.text = "ачивки юзера, ссыль на профиль, может динамическая ячейка"
-            return cell
         case .currentWeather(day: let day):
             let cell = tableView.dequeueReusableCell(withIdentifier: CurrentWeatherCell.identifier, for: indexPath) as! CurrentWeatherCell
             cell.setupWith(currentWeather: day)
@@ -80,11 +90,10 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: HourlyWeatherCell.identifier, for: indexPath) as! HourlyWeatherCell
             cell.setupWith(hourlyWeatherModel: hours)
             return cell
-        case .advice(advice: let advice):
-            let cell = tableView.dequeueReusableCell(withIdentifier: AdviceCell.identifier, for: indexPath) as! AdviceCell
-            cell.textLabel?.text = "рекомендации по погоде"
+        case .latest(latest: let latest):
+            let cell = tableView.dequeueReusableCell(withIdentifier: LatestCell.identifier, for: indexPath) as! LatestCell
+            cell.setupWith(model: latest)
             return cell
-
         }
     }
 }
