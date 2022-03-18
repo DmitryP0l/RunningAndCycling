@@ -37,11 +37,11 @@ class TimerCell: UITableViewCell {
         return label
     }()
     
-    private let setAllRunTimeLabel: UILabel = {
-        let label = UILabel()
+    private let setAllRunTimeLabel: UITextField = {
+        let label = UITextField()
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 18.0)
-        label.numberOfLines = 1
+        //label.numberOfLines = 1
         label.textColor = .lightGray
         return label
     }()
@@ -92,11 +92,36 @@ class TimerCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupView()
+        setupInterval()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    
+    private func setupInterval() {
+        let time = Date()
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_gb")
+        formatter.dateFormat = "HH:mm:ss"
+        setAllRunTimeLabel.text = formatter.string(from: time)
+        setAllRunTimeLabel.textColor = .link
+        
+        let timePicker = UIDatePicker()
+        timePicker.datePickerMode = .time
+        timePicker.addTarget(self, action: #selector(hren(sender:)), for: UIControl.Event.valueChanged)
+    }
+    
+    @objc func hren(sender: UIDatePicker) {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "en_gb")
+        formatter.dateFormat = "HH:mm:ss"
+        setAllRunTimeLabel.text = formatter.string(from: sender.date)
+    }
+    
+    
     
     private func setupView() {
         contentView.addSubview(containerView)

@@ -107,10 +107,12 @@ final class ButtonView: UIView {
     }
     @objc func stopButtonAction() {
         statePlayButton = .play
+        delegate?.stopButton()
     }
     
     @objc func locationButtonAction() {
         stateLocationButton = stateLocationButton == .noSelected ? .selected : .noSelected
+        delegate?.locationButton()
     }
     
     private func setupView() {

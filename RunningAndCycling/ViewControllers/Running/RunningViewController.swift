@@ -9,17 +9,14 @@ import UIKit
 
 class RunningViewController: UIViewController {
     
-    private let tableView = UITableView()
-    
     private let containerButtonView: ButtonView = {
         let view = ButtonView()
         return view
     }()
+    private let tableView = UITableView()
+    private let mapController = MapViewController()
     
-    
-    // это кстати нашел работающий таймер))
-   // private var currentTimer = "00.00.00"
-    
+    //timer
     private var timer = Timer()
     private var count: Int = 0
     private var timerCounting: Bool = false
@@ -28,12 +25,8 @@ class RunningViewController: UIViewController {
         if timerCounting {
             timerCounting = false
             timer.invalidate()
-//            let image = UIImage(systemName: "play.circle")
-//            button.setImage(image, for: .normal)
         } else {
             timerCounting = true
-//            let image = UIImage(systemName: "pause.circle")
-//            button.setImage(image, for: .normal)
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
         }
     }
@@ -42,7 +35,7 @@ class RunningViewController: UIViewController {
         count += 1
         let time = secondsToHoursMinSec(seconds: count)
         let timerString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
-       // currentTimer = timerString
+        print(timerString)
     }
     
     func secondsToHoursMinSec(seconds: Int) -> (Int, Int, Int) {
@@ -61,14 +54,16 @@ class RunningViewController: UIViewController {
     }
     
     func stopReset() {
-        let alert = UIAlertController(title: "reset?", message: "точно reset?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "stop?", message: "что делать-то будем теперь?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "cancel", style: .cancel, handler: { (_) in
         }))
-        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: "reset", style: .default, handler: { (_) in
             self.count = 0
             self.timer.invalidate()
         }))
-        
+        alert.addAction(UIAlertAction(title: "save", style: .destructive, handler:{ (_) in
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
     
@@ -173,23 +168,61 @@ extension RunningViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         }
     }
-    
-
 }
 
 
 extension RunningViewController: ButtonViewDelegate {
     func playButton() {
-        print("Play")
     }
     
     func stopButton() {
-        
+        stopReset()
     }
     
     func locationButton() {
-        
+     present(mapController, animated: true, completion: nil)
     }
-    
-    
 }
+
+
+
+//picker
+
+//
+//private var textField = UITextField()
+//private let hours = [1...23]
+//private let minutes = [1...59]
+//private let seconds = [1...59]
+//private let pickerView = UIPickerView()
+//
+//
+//override func viewDidLoad() {
+//    super.viewDidLoad()
+//    pickerView.delegate = self
+//    pickerView.dataSource = self
+//    textField.inputView = pickerView
+//    textField.textAlignment = .center
+//}
+//
+//}
+//
+//extension MapViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+//
+//func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//    return 3
+//}
+//
+//
+//func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//    return minutes.count
+//}
+//
+//func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//    return "\(minutes[row])" // но это хрень полная походу
+//}
+//
+//func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//    textField.text = "\(minutes[row])"
+//    textField.resignFirstResponder()
+//}
+//

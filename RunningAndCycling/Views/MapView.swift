@@ -22,6 +22,8 @@ final class MapView: UIView {
         let mapView = MKMapView()
         mapView.isZoomEnabled = true
         mapView.isScrollEnabled = true
+        mapView.isPitchEnabled = true
+        mapView.isRotateEnabled = true
         return mapView
     }()
     
@@ -64,7 +66,7 @@ extension MapView: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         print(locations)
         
-        if let location = locations.first {
+        if let location = locations.last {
             //manager.stopUpdatingLocation()
             render(location)
         }
@@ -90,3 +92,7 @@ extension MapView: CLLocationManagerDelegate {
         mapView.addAnnotation(pin)
     }
 }
+
+
+
+
