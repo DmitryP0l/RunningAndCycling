@@ -26,7 +26,7 @@ class DistanceCell: UITableViewCell {
         return view
     }()
     
-    private let currentDistanceLAbel: UILabel = {
+    let currentDistanceLAbel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 40)

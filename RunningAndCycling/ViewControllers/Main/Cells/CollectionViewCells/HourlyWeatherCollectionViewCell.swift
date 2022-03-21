@@ -17,6 +17,7 @@ final class HourlyWeatherCollectionViewCell: UICollectionViewCell {
         let view = UIView()
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
+        view.backgroundColor = .clear
         return view
     }()
     

@@ -26,6 +26,13 @@ class LatestCell: UITableViewCell {
         let view = UIView()
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
+        view.backgroundColor = .clear
+        view.layer.borderWidth = 0.5
+        view.layer.borderColor = UIColor.white.cgColor
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOpacity = 0.4
+        view.layer.shadowOffset = .zero
+        view.layer.shadowRadius = 10
         return view
     }()
     

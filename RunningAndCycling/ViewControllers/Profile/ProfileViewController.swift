@@ -37,6 +37,7 @@ class ProfileViewController: UIViewController {
             make.edges.equalToSuperview()
         }
         tableView.separatorStyle = .none
+        tableView.backgroundView = UIImageView(image: UIImage(named: "backgroung"))
         tableView.register(PhotoCell.self, forCellReuseIdentifier: PhotoCell.identifier)
         tableView.register(NameCell.self, forCellReuseIdentifier: NameCell.identifier)
         tableView.register(StatisticCell.self, forCellReuseIdentifier: StatisticCell.identifier)
@@ -83,6 +84,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.model = model
             }
             cell.isUserInteractionEnabled = false
+            cell.backgroundColor = .clear
             return cell
             
         case .name:
@@ -92,10 +94,12 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.model = model
             }
             cell.isUserInteractionEnabled = false
+            cell.backgroundColor = .clear
             return cell
             
         case .statistics:
             let cell = tableView.dequeueReusableCell(withIdentifier: StatisticCell.identifier, for: indexPath) as! StatisticCell
+            cell.backgroundColor = .clear
             return cell
 
         case .achievements:
@@ -105,6 +109,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
                 cell.model = model
             }
             cell.selectionStyle = .none
+            cell.backgroundColor = .clear
             return cell
         }
     }

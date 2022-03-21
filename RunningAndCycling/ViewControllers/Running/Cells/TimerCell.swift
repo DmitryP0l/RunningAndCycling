@@ -28,7 +28,7 @@ class TimerCell: UITableViewCell {
         return view
     }()
     
-    private let basicTimerLabel: UILabel = {
+    let basicTimerLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 40.0)

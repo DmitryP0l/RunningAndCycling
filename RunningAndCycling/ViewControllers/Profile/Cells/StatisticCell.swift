@@ -35,6 +35,7 @@ class StatisticCell: UITableViewCell {
         contentView.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.backgroundColor = .clear
         collectionView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
@@ -64,6 +65,7 @@ extension StatisticCell: UICollectionViewDelegate, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StatisticCollectionCell.identifier, for: indexPath) as! StatisticCollectionCell
         cell.model = dataSource[indexPath.row]
+        cell.backgroundColor = .clear
         return cell
     }
 }

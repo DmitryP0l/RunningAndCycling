@@ -30,14 +30,14 @@ class TabBarController: UITabBarController {
         let runningVC = configureTabBarItem(rootViewController: RunningViewController(),
                                             image: UIImage(systemName: "figure.walk"),
                                             selectedImage: UIImage(systemName: "figure.walk"))
-//        let cyclingVC = configureTabBarItem(rootViewController: CyclingViewController(),
-//                                            image: UIImage(systemName: "bicycle"),
-//                                            selectedImage: UIImage(systemName: "bicycle"))
+        let cyclingVC = configureTabBarItem(rootViewController: CyclingViewController(),
+                                            image: UIImage(systemName: "bicycle"),
+                                            selectedImage: UIImage(systemName: "bicycle"))
         let profileVC = configureTabBarItem(rootViewController: ProfileViewController(),
                                             image: UIImage(systemName: "person"),
                                             selectedImage: UIImage(systemName: "person"))
         
-        let controllers = [mainVC, runningVC, profileVC]
+        let controllers = [mainVC, runningVC, cyclingVC, profileVC]
         self.viewControllers = controllers
     }
     

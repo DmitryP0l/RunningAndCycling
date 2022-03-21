@@ -6,11 +6,27 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
 class RunningViewController: UIViewController {
     
+    var timerLabel: UILabel = UILabel()
+    var distanceLabel: UILabel = UILabel()
+    var speedLabel: UILabel = UILabel()
+    
+    let userDefaults = UserDefaults.standard
+    
+    var coorList: [CLLocationCoordinate2D] = []
+    var locationList: [[CLLocation]] = []
+    var distance: Double = 0.0
+    let manager = CLLocationManager()
+    
+    var one: Int = 1
+    
     private let containerButtonView: ButtonView = {
         let view = ButtonView()
+        view.backgroundColor = .clear
         return view
     }()
     private let tableView = UITableView()
@@ -35,7 +51,7 @@ class RunningViewController: UIViewController {
         count += 1
         let time = secondsToHoursMinSec(seconds: count)
         let timerString = makeTimeString(hours: time.0, minutes: time.1, seconds: time.2)
-        print(timerString)
+        timerLabel.text = timerString
     }
     
     func secondsToHoursMinSec(seconds: Int) -> (Int, Int, Int) {
@@ -62,6 +78,21 @@ class RunningViewController: UIViewController {
             self.timer.invalidate()
         }))
         alert.addAction(UIAlertAction(title: "save", style: .destructive, handler:{ (_) in
+            
+            var savedTranings: [SavedTraning] = []
+            if let data = self.userDefaults.value(forKey: "tranings") as? Data {
+                let tranings = try? PropertyListDecoder().decode(Array<SavedTraning>.self, from: data)
+                if let tranings = tranings {
+                    print("***\(tranings)")
+                    savedTranings = tranings
+                }
+            }
+            
+            let traning = SavedTraning(date: Date(), time: self.count, distance: self.distance)
+            savedTranings.append(traning)
+            self.timer.invalidate()
+            self.count = 0
+            self.userDefaults.set(try? PropertyListEncoder().encode(savedTranings), forKey: "tranings")
         }))
         self.present(alert, animated: true, completion: nil)
     }
@@ -70,7 +101,7 @@ class RunningViewController: UIViewController {
     
     
     private var timerList: [TimerCellModel] = [
-        TimerCellModel(currentTimer: "currentTimer", setTimer: "set timer 01.20", leftAllTimer: "left 00.34.04", setInterval: "set interval 00.15", leftInterval: "left 00.14.04")
+        TimerCellModel(currentTimer: "00 : 00 : 00", setTimer: "set timer 01.20", leftAllTimer: "left 00.34.04", setInterval: "set interval 00.15", leftInterval: "left 00.14.04")
     ]
     
     private var distancionList: [DistancionCellModel] = [
@@ -97,6 +128,7 @@ class RunningViewController: UIViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(70.0)
         }
+        containerButtonView.backgroundColor = .clear
         containerButtonView.delegate = self
     }
     
@@ -108,6 +140,7 @@ class RunningViewController: UIViewController {
         }
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundView = UIImageView(image: UIImage(named: "backgroung"))
         tableView.register(TimerCell.self, forCellReuseIdentifier: TimerCell.identifier)
         tableView.register(DistanceCell.self, forCellReuseIdentifier: DistanceCell.identifier)
         tableView.register(SpeedCell.self, forCellReuseIdentifier: SpeedCell.identifier)
@@ -151,6 +184,9 @@ extension RunningViewController: UITableViewDelegate, UITableViewDataSource {
             if let model = item.dataModel as? TimerCellModel {
                 cell.model = model
             }
+            cell.backgroundColor = .clear
+            cell.selectionStyle = .none
+            timerLabel = cell.basicTimerLabel
             return cell
             
         case .distabce:
@@ -158,6 +194,9 @@ extension RunningViewController: UITableViewDelegate, UITableViewDataSource {
             if let model = item.dataModel as? DistancionCellModel {
                 cell.model = model
             }
+            cell.backgroundColor = .clear
+            cell.selectionStyle = .none
+            distanceLabel = cell.currentDistanceLAbel
             return cell
             
         case .speed:
@@ -165,6 +204,8 @@ extension RunningViewController: UITableViewDelegate, UITableViewDataSource {
             if let model = item.dataModel as? SpeedCellModel {
                 cell.model = model
             }
+            cell.backgroundColor = .clear
+            cell.selectionStyle = .none
             return cell
         }
     }
@@ -173,6 +214,12 @@ extension RunningViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension RunningViewController: ButtonViewDelegate {
     func playButton() {
+        playPause()
+        manager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+        manager.delegate = self
+        manager.requestWhenInUseAuthorization()
+        manager.requestAlwaysAuthorization()
+        manager.startUpdatingLocation()
     }
     
     func stopButton() {
@@ -180,10 +227,34 @@ extension RunningViewController: ButtonViewDelegate {
     }
     
     func locationButton() {
+        
      present(mapController, animated: true, completion: nil)
+        
     }
 }
 
+extension RunningViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(locations)
+        if coorList.isEmpty {
+            distance += 0.0
+        } else {
+            let locationStart = CLLocation(latitude: (coorList.last?.latitude)!, longitude: (coorList.last?.longitude)!)
+            
+            let locationCurrent = CLLocation(latitude: (locations.first?.coordinate.latitude)!, longitude: (locations.first?.coordinate.longitude)!)
+            
+            distance += locationStart.distance(from: locationCurrent)
+        }
+        
+        coorList.append(CLLocationCoordinate2D(latitude: (locations.first?.coordinate.latitude)!, longitude: (locations.first?.coordinate.longitude)!))
+        
+        
+        locationList.append(locations)
+        mapController.coorList = self.coorList
+        distanceLabel.text = String(distance)
+    }
+}
 
 
 //picker

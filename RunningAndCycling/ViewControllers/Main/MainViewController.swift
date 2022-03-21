@@ -6,13 +6,14 @@
 //
 
 
+
 import UIKit
 import SnapKit
 
 final class MainViewController: UIViewController {
     
     private let tableView = UITableView()
-    
+
     private var dataSource: [MainCellType] = []
 
     private var latestList: [LatestCellModel] = [
@@ -38,6 +39,8 @@ final class MainViewController: UIViewController {
         tableView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        tableView.backgroundView = UIImageView(image: UIImage(named: "backgroung"))
+        tableView.backgroundColor = .clear
         tableView.isUserInteractionEnabled = true
         tableView.register(CurrentWeatherCell.self, forCellReuseIdentifier: CurrentWeatherCell.identifier)
         tableView.register(HourlyWeatherCell.self, forCellReuseIdentifier: HourlyWeatherCell.identifier)
@@ -59,8 +62,6 @@ final class MainViewController: UIViewController {
             dataSource.append(MainCellType.latest(latest: latest))
         }
     }
-    
-    
 }
 
 //MARK: - UITableViewDelegate, UITableViewDataSource
@@ -85,13 +86,18 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         case .currentWeather(day: let day):
             let cell = tableView.dequeueReusableCell(withIdentifier: CurrentWeatherCell.identifier, for: indexPath) as! CurrentWeatherCell
             cell.setupWith(currentWeather: day)
+            cell.selectionStyle = .none
+            cell.backgroundColor = .clear
             return cell
         case .hourly(hours: let hours):
             let cell = tableView.dequeueReusableCell(withIdentifier: HourlyWeatherCell.identifier, for: indexPath) as! HourlyWeatherCell
+            cell.backgroundColor = .clear
             cell.setupWith(hourlyWeatherModel: hours)
             return cell
         case .latest(latest: let latest):
             let cell = tableView.dequeueReusableCell(withIdentifier: LatestCell.identifier, for: indexPath) as! LatestCell
+            cell.selectionStyle = .none
+            cell.backgroundColor = .clear
             cell.setupWith(model: latest)
             return cell
         }

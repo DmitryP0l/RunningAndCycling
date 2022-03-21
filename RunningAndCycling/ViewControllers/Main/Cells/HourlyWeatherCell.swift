@@ -19,6 +19,7 @@ final class HourlyWeatherCell: UITableViewCell {
         layout.scrollDirection = .horizontal
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.register(HourlyWeatherCollectionViewCell.self, forCellWithReuseIdentifier: HourlyWeatherCollectionViewCell.identifier)
+        view.backgroundColor = .clear
         return view
     }()
     
@@ -47,7 +48,6 @@ final class HourlyWeatherCell: UITableViewCell {
             make.leading.trailing.bottom.equalToSuperview().inset(4)
             make.height.equalTo(80.0)
         }
-        containerView.backgroundColor = .red
     }
     
     private func setupCollectionView() {
@@ -79,6 +79,7 @@ extension HourlyWeatherCell: UICollectionViewDelegate, UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HourlyWeatherCollectionViewCell.identifier, for: indexPath) as! HourlyWeatherCollectionViewCell
         cell.setupWith(hoursWeather: dataSource[indexPath.row])
+        cell.backgroundColor = .clear
         return cell
     }
     

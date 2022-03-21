@@ -63,6 +63,7 @@ final class ButtonView: UIView {
         let view = UIView()
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
+        view.backgroundColor = .clear
         return view
     }()
     
@@ -124,7 +125,6 @@ final class ButtonView: UIView {
         containerView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        containerView.backgroundColor = .clear
         
         playButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()

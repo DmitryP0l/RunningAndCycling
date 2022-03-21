@@ -16,6 +16,12 @@ final class CurrentWeatherCell: UITableViewCell {
         let view = UIView()
         view.layer.cornerRadius = 10
         view.clipsToBounds = true
+//        view.layer.borderWidth = 2.0
+//        view.layer.borderColor = UIColor.red.cgColor
+        view.layer.shadowRadius = 15.0
+        view.layer.shadowColor = UIColor.white.cgColor
+        view.layer.shadowOpacity = 0.5
+        view.layer.shadowOffset = .zero
         return view
     }()
     

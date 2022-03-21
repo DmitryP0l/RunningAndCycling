@@ -19,7 +19,7 @@ struct RunningCellItem {
 }
 
 struct TimerCellModel {
-    let currentTimer: String?
+    var currentTimer: String?
     let setTimer: String?
     let leftAllTimer: String?
     let setInterval: String?
@@ -37,3 +37,8 @@ struct SpeedCellModel {
     let averageSpeed: String?
 }
 
+struct SavedTraning: Codable {
+    let date: Date
+    let time: Int
+    let distance: Double
+}
