@@ -16,6 +16,7 @@ class customPin: NSObject, MKAnnotation {
     var title: String?
     var subtitle: String?
 
+
     init(pinTitle:String, pinSubTitle:String, location:CLLocationCoordinate2D) {
         self.title = pinTitle
         self.subtitle = pinSubTitle
@@ -23,7 +24,11 @@ class customPin: NSObject, MKAnnotation {
     }
 }
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+final class MapViewController: UIViewController {
+    
+    var flag: Int = 1
+    
+    let locationManager = CLLocationManager()
     
     var coorList: [CLLocationCoordinate2D] = [] {
         didSet {
@@ -73,34 +78,73 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             dismiss(animated: true, completion: nil)
         }
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         drawPolyLine()
-        self.mapView.delegate = self
+        mapView.delegate = self
+        setupManager()
     }
     
     func drawPolyLine() {
-        var polyline = MKPolyline(coordinates: &coorList, count: coorList.count)
+        let polyline = MKPolyline(coordinates: &coorList, count: coorList.count)
                 mapView.addOverlay(polyline)
     }
+    
+    private func setupManager() {
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+    }
+}
 
-    //MARK:- MapKit delegates
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        if let routePolyline = overlay as? MKPolyline {
-            let renderer = MKPolylineRenderer(polyline: routePolyline)
-            renderer.strokeColor = UIColor.blue.withAlphaComponent(0.9)
-            renderer.lineWidth = 7
-            return renderer
+//MARK:- MKMapViewDelegate
+    extension MapViewController: MKMapViewDelegate {
+        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            if let routePolyline = overlay as? MKPolyline {
+                let renderer = MKPolylineRenderer(polyline: routePolyline)
+                renderer.strokeColor = UIColor.blue.withAlphaComponent(0.9)
+                renderer.lineWidth = 7
+                return renderer
+            }
+            return MKOverlayRenderer()
         }
-        return MKOverlayRenderer()
+
+        override func didReceiveMemoryWarning() {
+            super.didReceiveMemoryWarning()
+            // Dispose of any resources that can be recreated.
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
+//MARK: - CLLocationManagerDelegate
+extension MapViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print(locations)
+        
+        if let location = locations.last {
+            render(location)
+        }
     }
-
-
+    
+    private func render(_ location: CLLocation) {
+        
+        let coordinate = CLLocationCoordinate2D(
+            latitude: location.coordinate.latitude,
+            longitude: location.coordinate.longitude
+        )
+        //требует доработки на возврат к масштабу и текушему положению через пару сек
+        if flag == 1 {
+            let span = MKCoordinateSpan(latitudeDelta: 0.01,
+                                        longitudeDelta: 0.01)
+            let region = MKCoordinateRegion(center: coordinate,
+                                            span: span)
+            mapView.setRegion(region,
+                              animated: true)
+            flag -= 1
+        }
+    }
 }

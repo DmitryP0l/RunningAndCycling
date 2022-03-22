@@ -22,8 +22,6 @@ class RunningViewController: UIViewController {
     var distance: Double = 0.0
     let manager = CLLocationManager()
     
-    var one: Int = 1
-    
     private let containerButtonView: ButtonView = {
         let view = ButtonView()
         view.backgroundColor = .clear
@@ -249,10 +247,9 @@ extension RunningViewController: CLLocationManagerDelegate {
         
         coorList.append(CLLocationCoordinate2D(latitude: (locations.first?.coordinate.latitude)!, longitude: (locations.first?.coordinate.longitude)!))
         
-        
         locationList.append(locations)
         mapController.coorList = self.coorList
-        distanceLabel.text = String(distance)
+        distanceLabel.text = String(format: "%.2f", distance)
     }
 }
 
