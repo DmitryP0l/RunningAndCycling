@@ -39,9 +39,11 @@ class RunningViewController: UIViewController {
         if timerCounting {
             timerCounting = false
             timer.invalidate()
+            manager.stopUpdatingLocation()
         } else {
             timerCounting = true
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
+            manager.startUpdatingLocation()
         }
     }
     
@@ -74,30 +76,31 @@ class RunningViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "reset", style: .default, handler: { (_) in
             self.count = 0
             self.timer.invalidate()
+            self.timerLabel.text = "00 : 00 : 00"
+            self.distanceLabel.text = "0.00"
+            self.speedLabel.text = "0.00"
+            
         }))
         alert.addAction(UIAlertAction(title: "save", style: .destructive, handler:{ (_) in
             
-            var savedTranings: [SavedTraning] = []
-            if let data = self.userDefaults.value(forKey: "tranings") as? Data {
-                let tranings = try? PropertyListDecoder().decode(Array<SavedTraning>.self, from: data)
-                if let tranings = tranings {
-                    print("***\(tranings)")
-                    savedTranings = tranings
+            var savedTranings: [SavedTraining] = []
+            if let data = self.userDefaults.value(forKey: "trainings") as? Data {
+                let trainings = try? PropertyListDecoder().decode(Array<SavedTraining>.self, from: data)
+                if let trainings = trainings {
+                    savedTranings = trainings
                 }
             }
             
-            let traning = SavedTraning(date: Date(), time: self.count, distance: self.distance)
+            let traning = SavedTraining(date: Date(), time: self.count, distance: self.distance)
             savedTranings.append(traning)
             self.timer.invalidate()
             self.count = 0
-            self.userDefaults.set(try? PropertyListEncoder().encode(savedTranings), forKey: "tranings")
+            self.userDefaults.set(try? PropertyListEncoder().encode(savedTranings), forKey: "trainings")
         }))
         self.present(alert, animated: true, completion: nil)
     }
     
-    
-    
-    
+
     private var timerList: [TimerCellModel] = [
         TimerCellModel(currentTimer: "00 : 00 : 00", setTimer: "set timer 01.20", leftAllTimer: "left 00.34.04", setInterval: "set interval 00.15", leftInterval: "left 00.14.04")
     ]
@@ -202,6 +205,7 @@ extension RunningViewController: UITableViewDelegate, UITableViewDataSource {
             if let model = item.dataModel as? SpeedCellModel {
                 cell.model = model
             }
+            speedLabel = cell.currentSpeedLabel
             cell.backgroundColor = .clear
             cell.selectionStyle = .none
             return cell
@@ -217,16 +221,24 @@ extension RunningViewController: ButtonViewDelegate {
         manager.delegate = self
         manager.requestWhenInUseAuthorization()
         manager.requestAlwaysAuthorization()
-        manager.startUpdatingLocation()
     }
     
     func stopButton() {
+        timerCounting = false
+        timer.invalidate()
+        manager.stopUpdatingLocation()
         stopReset()
     }
     
     func locationButton() {
-        
      present(mapController, animated: true, completion: nil)
+    }
+    
+    func currentSpeed() {
+        let speed = manager.location?.speed
+        if let speed = speed {
+            speedLabel.text = String(speed)
+        }
         
     }
 }
@@ -250,6 +262,9 @@ extension RunningViewController: CLLocationManagerDelegate {
         locationList.append(locations)
         mapController.coorList = self.coorList
         distanceLabel.text = String(format: "%.2f", distance)
+        
+        currentSpeed()
+        
     }
 }
 

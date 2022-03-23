@@ -22,7 +22,6 @@ final class LineChartView: UIView {
         static let circleDiameter: CGFloat = 5.0
     }
     
-    // 1
     @IBInspectable var startColor: UIColor = .white
     @IBInspectable var endColor: UIColor = .black
     
@@ -42,13 +41,10 @@ final class LineChartView: UIView {
         }
         let colors = [startColor.cgColor, endColor.cgColor]
         
-        // 3
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         
-        // 4
         let colorLocations: [CGFloat] = [0.0, 1.0]
         
-        // 5
         guard let gradient = CGGradient(
             colorsSpace: colorSpace,
             colors: colors as CFArray,
@@ -57,7 +53,6 @@ final class LineChartView: UIView {
             return
         }
         
-        // 6
         let startPoint = CGPoint.zero
         let endPoint = CGPoint(x: 0, y: bounds.height)
         context.drawLinearGradient(
@@ -66,17 +61,13 @@ final class LineChartView: UIView {
             end: endPoint,
             options: []
         )
-        // Calculate the x point
         
         let margin = Constants.margin
         let graphWidth = width - margin * 2 - 4
         let columnXPoint = { (column: Int) -> CGFloat in
-            // Вычислить разрыв между точками
             let spacing = graphWidth / CGFloat(self.graphPoints.count - 1)
             return CGFloat(column) * spacing + margin + 2
         }
-        
-        // Calculate the y point
         
         let topBorder = Constants.topBorder
         let bottomBorder = Constants.bottomBorder
@@ -89,45 +80,32 @@ final class LineChartView: UIView {
             return graphHeight + topBorder - yPoint // Flip the graph
         }
         
-        // Draw the line graph
-        
         UIColor.white.setFill()
         UIColor.white.setStroke()
         
-        // Set up the points line
         let graphPath = UIBezierPath()
         
-        // Go to start of line
         graphPath.move(to: CGPoint(x: columnXPoint(0), y: columnYPoint(Int(graphPoints[0]))))
         
-        // Add points for each item in the graphPoints array
-        // at the correct (x, y) for the point
         for i in 1..<graphPoints.count {
             let nextPoint = CGPoint(x: columnXPoint(i), y: columnYPoint(Int(graphPoints[i])))
             graphPath.addLine(to: nextPoint)
         }
         
-        // Create the clipping path for the graph gradient
-        
-        // 1 - Save the state of the context (commented out for now)
         context.saveGState()
         
-        // 2 - Make a copy of the path
         guard let clippingPath = graphPath.copy() as? UIBezierPath else {
             return
         }
         
-        // 3 - Add lines to the copied path to complete the clip area
         clippingPath.addLine(to: CGPoint(
             x: columnXPoint(graphPoints.count - 1),
             y: height))
         clippingPath.addLine(to: CGPoint(x: columnXPoint(0), y: height))
         clippingPath.close()
         
-        // 4 - Add the clipping path to the context
         clippingPath.addClip()
         
-        // 5 - Check clipping path - Temporary code
         let highestYPoint = columnYPoint(Int(maxValue))
         let graphStartPoint = CGPoint(x: margin, y: highestYPoint)
         let graphEndPoint = CGPoint(x: margin, y: bounds.height)
@@ -139,23 +117,17 @@ final class LineChartView: UIView {
             options: [])
         context.restoreGState()
         
-        // End temporary code
-        // Рисуем линию поверх обрезанного градиента
         graphPath.lineWidth =  2.0
         graphPath.stroke()
         
-        // Draw horizontal graph lines on the top of everything
         let linePath = UIBezierPath()
         
-        // Top line
         linePath.move(to: CGPoint(x: margin, y: topBorder))
         linePath.addLine(to: CGPoint(x: width - margin, y: topBorder))
         
-        // Center line
         linePath.move(to: CGPoint(x: margin, y: graphHeight / 2 + topBorder))
         linePath.addLine(to: CGPoint(x: width - margin, y: graphHeight / 2 + topBorder))
         
-        // Bottom line
         linePath.move(to: CGPoint(x: margin, y: height - bottomBorder))
         linePath.addLine(to: CGPoint(x: width - margin, y: height - bottomBorder))
         let color = UIColor(white: 1.0, alpha: Constants.colorAlpha)
@@ -171,7 +143,7 @@ final class LineChartView: UIView {
 
 
 
-
+// очень замороченный график
 //import UIKit
 //
 //struct PointEntry {

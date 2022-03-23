@@ -37,7 +37,7 @@ struct SpeedCellModel {
     let averageSpeed: String?
 }
 
-struct SavedTraning: Codable {
+struct SavedTraining: Codable {
     let date: Date
     let time: Int
     let distance: Double

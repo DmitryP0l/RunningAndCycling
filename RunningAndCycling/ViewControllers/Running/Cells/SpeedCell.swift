@@ -25,7 +25,7 @@ class SpeedCell: UITableViewCell {
         return view
     }()
     
-    private let currentSpeedLabel: UILabel = {
+    let currentSpeedLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 40)

@@ -37,7 +37,7 @@ class TabBarController: UITabBarController {
                                             image: UIImage(systemName: "person"),
                                             selectedImage: UIImage(systemName: "person"))
         
-        let controllers = [mainVC, runningVC, cyclingVC, profileVC]
+        let controllers = [mainVC, runningVC, profileVC]
         self.viewControllers = controllers
     }
     
